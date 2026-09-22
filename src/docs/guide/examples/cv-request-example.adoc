@@ -1,7 +1,0 @@
-= CV request example
-
-Below is a complete example-file for CV request.
-[source, xml, indent=0]
-----
-include::../{example-dir-cv-request}/cv-request-example.xml[tags=Complete]
-----

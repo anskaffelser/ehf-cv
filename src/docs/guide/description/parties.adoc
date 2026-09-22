@@ -1,7 +1,7 @@
 [[parties]]
 = Parties
 
-The following parties/roles may be specified in EHF CV. These are only relevant to use when CV request and CV are exchanged as messages via a network such as Peppol.
+The following parties/roles may be specified in EHF CV:
 
 [[sender-party]]
 == Sender (SenderParty)
@@ -13,7 +13,7 @@ Sender is the sender of CV-request or CV.
 ----
 include::../{snippet-dir-cv-request}/cv-request.xml[tags=Sender]
 ----
-<1> schemeID according to codelist Electronic address identifier (EAID) (chapter 5.11)
+<1> schemeID according to codelist Electronic address identifier (EAID)
 
 [[receiver-party]]
 == Receiver (ReceiverParty)
@@ -25,4 +25,4 @@ Receiver is the receiver of CV-request or CV.
 ----
 include::../{snippet-dir-cv-request}/cv-request.xml[tags=Receiver]
 ----
-<1> schemeID according to codelist Electronic address identifier (EAID) (chapter 5.11)
+<1> schemeID according to codelist Electronic address identifier (EAID)

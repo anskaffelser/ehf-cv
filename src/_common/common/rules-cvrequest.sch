@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pattern xmlns="http://purl.oclc.org/dsdl/schematron">
 
-    <rule context="cv-req:EndpointID[@scheme = '0192']">
+    <rule context="cv-req:EndpointID[@schemeID = '0192']">
         <assert id="EHF-COMMON-R011"
             test="matches(., '^[0-9]{9}$') and u:mod11(.)"
             flag="fatal">MUST be a valid Norwegian organization number. Only numerical value allowed</assert>

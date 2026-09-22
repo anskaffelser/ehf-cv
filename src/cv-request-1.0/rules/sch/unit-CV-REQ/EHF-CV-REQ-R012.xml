@@ -12,9 +12,9 @@
 		</assert>
 		<CVRequest xmlns="urn:fdc:anskaffelser.no:2019:ehf:schema:CVRequest-1">
 
-      <SkillPractice>
+      <Skills>
         <MinimumLengthPractice>8</MinimumLengthPractice>
-      </SkillPractice>
+      </Skills>
 
 		</CVRequest>
 	</test>
@@ -25,25 +25,63 @@
     </assert>
     <CVRequest xmlns="urn:fdc:anskaffelser.no:2019:ehf:schema:CVRequest-1">
 
-      <SkillPractice>
+      <Skills>
         <MinimumLengthPractice>0</MinimumLengthPractice>
-      </SkillPractice>
+      </Skills>
 
     </CVRequest>
   </test>
 
   <test id="3">
     <assert>
-      <error>EHF-CV-REQ-R012</error>
+      <success>EHF-CV-REQ-R012</success>
     </assert>
     <CVRequest xmlns="urn:fdc:anskaffelser.no:2019:ehf:schema:CVRequest-1">
 
-      <SkillPractice>
-        <MinimumLengthPractice>-5</MinimumLengthPractice>
-      </SkillPractice>
+      <AlternativeSkills>
+        <MinimumLengthPractice>12</MinimumLengthPractice>
+      </AlternativeSkills>
 
     </CVRequest>
   </test>
 
+  <test id="4">
+    <assert>
+      <success>EHF-CV-REQ-R012</success>
+    </assert>
+    <CVRequest xmlns="urn:fdc:anskaffelser.no:2019:ehf:schema:CVRequest-1">
+
+      <Skills>
+        <Type>java</Type>
+      </Skills>
+
+    </CVRequest>
+  </test>
+
+  <test id="5">
+    <assert>
+      <error>EHF-CV-REQ-R012</error>
+    </assert>
+    <CVRequest xmlns="urn:fdc:anskaffelser.no:2019:ehf:schema:CVRequest-1">
+
+      <Skills>
+        <MinimumLengthPractice>-5</MinimumLengthPractice>
+      </Skills>
+
+    </CVRequest>
+  </test>
+
+  <test id="6">
+    <assert>
+      <error>EHF-CV-REQ-R012</error>
+    </assert>
+    <CVRequest xmlns="urn:fdc:anskaffelser.no:2019:ehf:schema:CVRequest-1">
+
+      <AlternativeSkills>
+        <MinimumLengthPractice>-1</MinimumLengthPractice>
+      </AlternativeSkills>
+
+    </CVRequest>
+  </test>
 
 </testSet>

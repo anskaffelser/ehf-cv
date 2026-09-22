@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<buildConfigurations xmlns="http://difi.no/xsd/vefa/validator/1.0">
+
+    <package>EHF CV Request 1.0</package>
+
+    <testfolder>cv-request-1.0/rules/example</testfolder>
+    <testfolder>cv-request-1.0/rules/snippets</testfolder>
+    <testfolder>cv-request-1.0/rules/sch/unit-CV-REQ</testfolder>
+
+    <!-- EHF CV Request 1.0 -->
+
+    <configuration>
+        <identifier>ehf-cv-request-1.0</identifier>
+        <title>EHF CV Request 1.0</title>
+        <declaration type="xml">urn:fdc:anskaffelser.no:2019:ehf:schema:CVRequest-1::CVRequest</declaration>
+        <!--<inherit></inherit> --> <!-- Maa legge inn XSD-en -->
+        <file path="sch/EHF-CV-REQUEST-1.0.sch" />
+    </configuration>
+
+</buildConfigurations>

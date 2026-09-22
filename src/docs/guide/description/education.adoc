@@ -19,9 +19,9 @@ will only provide qualified candidates to make it easier to do the rating.
 include::../{snippet-dir-cv-request}/cv-request.xml[tags=Education]
 ----
 <1> Education identifier
-<2> Education requirement - indicate whether a candidate needs to fulfill the educational requirement. According to codelist Requirement code (chapter 5.5).
+<2> Education requirement - indicate whether a candidate needs to fulfill the educational requirement. According to codelist Requirement code
 <3> Education title in freetext
-<4> Education degree according to codelist Education degree (chapter 5.2)
+<4> Education degree according to codelist Education degree
 
 .Example of the requested education in the CV request with alternative requirements
 [source, xml, indent=0]
@@ -29,9 +29,9 @@ include::../{snippet-dir-cv-request}/cv-request.xml[tags=Education]
 include::../{snippet-dir-cv-request}/cv-request.xml[tags=EducationAlternative]
 ----
 <1> Education identifier
-<2> Education requirement - indicate whether a candidate needs to fulfill the educational requirement. According to codelist Requirement code (chapter 5.5).
+<2> Education requirement - indicate whether a candidate needs to fulfill the educational requirement. According to codelist Requirement code
 <3> Education title in freetext
-<4> Education degree according to codelist Education degree (chapter 5.2)
+<4> Education degree according to codelist Education degree
 <5> Alternative education requirements
 
 In some cases the Contracting Authorities may accept relevant experiences as a compensation for an education degree. They will then state the type of experience and minimum years of experience. The following example illustrates that. In addition,
@@ -43,9 +43,9 @@ there is also possible to have alternative educations.
 include::../{snippet-dir-cv-request}/cv-request.xml[tags=EducationRelevantExperience]
 ----
 <1> Education identifier
-<2> Education requirement - indicate whether a candidate needs to fulfill the educational requirement. According to codelist Requirement code (chapter 5.5).
+<2> Education requirement - indicate whether a candidate needs to fulfill the educational requirement. According to codelist Requirement code
 <3> Education title in freetext
-<4> Relevant experience type according to codelist Classification of Occupations (Styrk98) (chapter 5.8)
+<4> Relevant experience type according to codelist Classification of Occupations (Styrk98)
 <5> Minimum year of relevant experience
 
 == Information specific to CV
@@ -59,7 +59,7 @@ include::../{snippet-dir-cv}/cv.xml[tags=Education]
 ----
 <1> Education identifier
 <2> Education name in freetext
-<3> Education degree according to code list Education degree (chapter 5.2) 
+<3> Education degree according to code list Education degree
 <4> Education period
 <5> Embedded document as binary object with `mimeCode`. Use Base64.
 <6> URI to education document, typically `vitnemalsportalen` in Norway

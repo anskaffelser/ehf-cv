@@ -4,7 +4,8 @@
     <Title>Sector code list</Title>
     <Identifier>sector</Identifier>
     <Version>1.0</Version>
-    <!-- tag::Sector[] -->
+
+    <!-- tag::sector[] -->
     <Agency>DFO</Agency>
 
     <Code>

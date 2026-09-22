@@ -1,0 +1,21 @@
+
+= Time
+
+Times shall be in accordance to the “Complete representation, local time of day” as specified by {ISO8601}, format *HH:MM:SS*.
+
+====
+IMPORTANT: Times shall *not* include timezone information.
+====
+
+[cols="1s,1,1,1", options="header"]
+|===
+|Component
+|Use
+|Primitive Type
+|Example
+
+|Content
+|Mandatory
+|Time
+|10:30:00
+|===

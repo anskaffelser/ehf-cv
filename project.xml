@@ -100,10 +100,6 @@
     </Resource>
     <Resource>
         <Type>CodeList-1</Type>
-        <Path>src/_common/codelist/NUS.xml</Path>
-    </Resource>
-    <Resource>
-        <Type>CodeList-1</Type>
         <Path>src/_common/codelist/requirement.xml</Path>
     </Resource>
     <Resource>
@@ -113,6 +109,18 @@
     <Resource>
         <Type>CodeList-1</Type>
         <Path>src/_common/codelist/police-certificate.xml</Path>
+    </Resource>
+    <Resource>
+        <Type>CodeList-1</Type>
+        <Path>src/_common/codelist/position-level.xml</Path>
+    </Resource>
+    <Resource>
+        <Type>CodeList-1</Type>
+        <Path>src/_common/codelist/sector.xml</Path>
+    </Resource>
+    <Resource>
+        <Type>CodeList-1</Type>
+        <Path>src/_common/codelist/skills-type.xml</Path>
     </Resource>
 
 </Project>

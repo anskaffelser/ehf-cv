@@ -3,7 +3,7 @@
 May be used for additional information about the applicant, not provided in other information groups in. Only used in CV, not in CV request.
 
 Give a short title of additional information in element `cv:Title` and describe the information in element `cv:Description`.
-Documentation of the information can be stated as a URI (`cv:URI`) and/or embedded document
+Documentation of the information can be stated as a URI (`cv:ExternalReference/cv:URI`) and/or embedded document
 (`cv:EmbeddedDocumentBinaryObject`).
 
 .Example of a description of additional information in a CV

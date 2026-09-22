@@ -6,21 +6,22 @@ This is not the same as project experience.
 == Information specific to CV request
 
 A Contracting Authority can specify a request for a work experience in several ways.
-For each work experience there must be a position level, i.e. employee, middle level manager or manager to illustrate
+For each work experience a position level can be stated, i.e. employee, middle level manager or manager to illustrate
 the type of experience a candidate needs for the assignment.
 
-It is also possible to request a work experience specific to a industry or workplace. The job sector need to
-be specified for each work experience in element `cv-req:JobSector`, e.g. "private".
+It is also possible to request a work experience specific to a industry or workplace. The job sector can be
+specified for each work experience in element `cv-req:JobSector`, e.g. "private".
 
-The minimum total experience must be specified in element `cv-req:MinimumTotalExperience`. This implies that the candidate
+The minimum total experience can be specified in element `cv-req:MinimumYearsExperience`. This implies that the candidate
 must fulfill this requirement and it can be used to differentiate a junior from a senior candidate.
 
 In the CV request, the Contracting Authority can state the requested period for a work experience in element
 `cv-req:Period`. This implies that the candidate can only refer to work experience from this period, for example work experience from the last seven years.
 
-The description of experience need to be provided in element `cv-req:WorkExperienceDescription`, where candidate's role must
-be specified in element `cv-req:Role`. It is also possible to describe the project activities and candidate's
-position percent (e.g. must have worked 100%, full-time, with the project).
+The description of experience is provided in element `cv-req:WorkExperienceDescription`, where the candidate's
+position percent must be specified in element `cv-req:PositionPercent` (e.g. must have worked 100%, full-time, with the
+assignment). The candidate's role (`cv-req:Role`) and the activities performed (`cv-req:Activities`) may also be
+described.
 
 .Example of the requested work experience in the CV request
 [source, xml, indent=0]
@@ -28,15 +29,15 @@ position percent (e.g. must have worked 100%, full-time, with the project).
 include::../{snippet-dir-cv-request}/cv-request.xml[tags=WorkExperience]
 ----
 <1> Work experience identifier
-<2> Work experience requirement - indicate whether a candidate needs to fulfill the work experience requirement. According to codelist Requirement code (chapter 5.5).
-<3> Position level according to codelist International Classification of Occupations (Isco/Styrk08) (chapter 5.7)
-<4> Type of industry according to codelist Classification of standard industrial classification (NACE) (chapter 5.9)
-<5> Workplace according to codelist ISO 3166-1:Alpha2 Country codes (chapter 5.12)
+<2> Work experience requirement - indicate whether a candidate needs to fulfill the work experience requirement. According to codelist Requirement code
+<3> Position level according to codelist Position level
+<4> Type of industry according to codelist Classification of standard industrial classification (NACE)
+<5> Workplace according to codelist ISO 3166-1:Alpha2 Country codes
 <6> Job sector (private, public or other)
 <7> Minimum total years of experience
 <8> Period
 <9> Position percent
-<10> Role in work experience according to code list Classification of Occupations (Styrk98) (chapter 5.8)
+<10> Role in work experience according to code list Classification of Occupations (Styrk98)
 <11> Description of work activities
 
 .Example of the requested work experience in the CV request with alternative requirement
@@ -45,23 +46,21 @@ include::../{snippet-dir-cv-request}/cv-request.xml[tags=WorkExperience]
 include::../{snippet-dir-cv-request}/cv-request.xml[tags=WorkExperienceAlternative]
 ----
 <1> Work experience identifier
-<2> Work experience requirement - indicate whether a candidate needs to fulfill the work experience requirement. According to codelist Requirement code (chapter 5.5).
-<3> Position level according to codelist International Classification of Occupations (Isco/Styrk08) (chapter 5.6)
-<4> Type of industry according to codelist Classification of standard industrial classification (NACE) (chapter 5.9)
-<5> Workplace according to codelist ISO 3166-1:Alpha2 Country codes (chapter 5.12)
+<2> Work experience requirement - indicate whether a candidate needs to fulfill the work experience requirement. According to codelist Requirement code
+<3> Position level according to codelist Position level
+<4> Type of industry according to codelist Classification of standard industrial classification (NACE)
+<5> Workplace according to codelist ISO 3166-1:Alpha2 Country codes
 <6> Job sector (private, public or other)
 <7> Minimum total years of experience
 <8> Period
 <9> Position percent
-<10> Role in work experience according to code list Classification of Occupations (Styrk98) (chapter 5.8)
+<10> Role in work experience according to code list Classification of Occupations (Styrk98)
 <11> Description of work activities
 <12> Alternative work experience
 
 == Information specific to CV
 
-Based on the project experience requirement, the Economic Operator needs to document the candidate's work experience.
-The element `cv:EducationReference` and `cv:WorkExperienceReference` needs to be used. The education reference corresponds to the educational requirement in the CV request when
-the Contracting Authority accepts relevant experience. The work experience in the CV must correspond to the work experience in the CV request.
+Based on the work experience requirement, the Economic Operator needs to document the candidate's work experience.
 
 .Example of a description of work in CV as a response to requested work experience in CV request
 [source, xml, indent=0]
@@ -69,13 +68,13 @@ the Contracting Authority accepts relevant experience. The work experience in th
 include::../{snippet-dir-cv}/cv.xml[tags=WorkExperience]
 ----
 <1> Work experience identifier
-<2> Position level according to codelist International Classification of Occupations (Isco/Styrk08) (chapter 5.6)
-<3> Type of industry according to codelist Classification of standard industrial classification (NACE) (chapter 5.9)
-<4> Workplace according to codelist ISO 3166-1:Alpha2 Country codes (chapter 5.12)
+<2> Position level according to codelist Position level
+<3> Type of industry according to codelist Classification of standard industrial classification (NACE)
+<4> Workplace according to codelist ISO 3166-1:Alpha2 Country codes
 <5> Job sector (private, public or other)
-<6> Information about company where experience was gained. schemeID according to codelist Electronic address identifier (EAID) (chapter 5.11)
+<6> Information about company where experience was gained. The company identifier has schemeID according to codelist Electronic address identifier (EAID)
 <7> Period for experience
 <8> Position percent
-<9> Role in work experience according to code list Classification of Occupations (Styrk98) (chapter 5.8)
+<9> Role in work experience according to code list Classification of Occupations (Styrk98)
 <10> Description of work activities
 <11> Contact information in relevant company

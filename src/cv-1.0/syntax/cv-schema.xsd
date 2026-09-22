@@ -1,325 +1,425 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns="urn:fdc:anskaffelser.no:2019:ehf:schema:CV-1"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    targetNamespace="urn:fdc:anskaffelser.no:2019:ehf:schema:CV-1"
-    attributeFormDefault="unqualified"
-    elementFormDefault="qualified"
+    targetNamespace="urn:fdc:anskaffelser.no:2019:ehf:schema:CV-1" elementFormDefault="qualified"
     version="1.0">
 
     <xs:element name="CV" type="CVType"/>
 
     <xs:complexType name="CVType">
         <xs:sequence>
-            <xs:element name ="CustomizationID" type="IdentifierType"/>
-            <xs:element name ="ProfileID" type="IdentifierType"/>
-
-            <xs:element name="ID" type="xs:normalizedString"/>
-
-            <xs:element name="IssueDate" type="xs:date" minOccurs="0"/>
-            <xs:element name="IssueTime" type="xs:time" minOccurs="0"/>
-
-            <xs:element name="FolderReference" type="ReferenceType" minOccurs="0"/>
-
-            <xs:element name="SenderParty" type="PartyType" minOccurs="0"/>
-            <xs:element name="ReceiverParty" type="PartyType" minOccurs="0"/>
-
+            <xs:element name="CustomizationID" type="IdentifierType"/>
+            <xs:element name="ProfileID" type="IdentifierType"/>
+            <xs:element name="ID" type="IdentifierType"/>
+            <xs:element name="RoleDescription" type="TextType"/>
+            <xs:element name="IssueDate" type="DateType"/>
+            <xs:element name="IssueTime" type="TimeType" minOccurs="0"/>
+            <xs:element name="SenderParty" type="SenderPartyType"/>
+            <xs:element name="ReceiverParty" type="ReceiverPartyType"/>
             <xs:element name="PoliceCertificate" type="PoliceCertificateType" minOccurs="0"/>
-
             <xs:element name="Education" type="EducationType" minOccurs="0" maxOccurs="unbounded"/>
-
             <xs:element name="Course" type="CourseType" minOccurs="0" maxOccurs="unbounded"/>
-
-            <xs:element name="Certification" type="CertificationType" minOccurs="0" maxOccurs="unbounded"/>
-
-            <xs:element name="LanguageSkills" type="LanguageSkillsType" minOccurs="0" maxOccurs="unbounded"/>
-
-            <xs:element name="ProjectExperience" type="ProjectExperienceType" minOccurs="0" maxOccurs="unbounded"/>
-
-            <xs:element name="WorkExperience" type="WorkExperienceType" minOccurs="0" maxOccurs="unbounded"/>
-
-            <xs:element name="Clearance" type="ClearanceType" minOccurs="0" maxOccurs="unbounded"/>
-
-            <xs:element name="Reference" type="ReferenceType" minOccurs="0" maxOccurs="unbounded"/>
-
+            <xs:element name="Certification" type="CertificationType" minOccurs="0"
+                maxOccurs="unbounded"/>
+            <xs:element name="LanguageSkills" type="LanguageSkillsType" minOccurs="0"
+                maxOccurs="unbounded"/>
+            <xs:element name="ProjectExperience" type="ProjectExperienceType" minOccurs="0"
+                maxOccurs="unbounded"/>
+            <xs:element name="WorkExperience" type="WorkExperienceType" minOccurs="0"
+                maxOccurs="unbounded"/>
             <xs:element name="Skills" type="SkillsType" minOccurs="0" maxOccurs="unbounded"/>
-
-            <xs:element name="PersonalSkills" type="PersonalSkillsType" minOccurs="0" maxOccurs="unbounded"/>
-
-            <xs:element name="PersonalInformation" type="PersonalInformationType" minOccurs="0"/>
-
-            <xs:element name="Interest" type="InterestType" minOccurs="0" maxOccurs="unbounded"/>
-
-            <xs:element name="AdditionalInformation" type="AdditionalInformationType" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="Clearance" type="ClearanceType" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="PersonalInformation" type="PersonalInformationType" minOccurs="0"
+                maxOccurs="unbounded"/>
+            <xs:element name="AdditionalInformation" type="AdditionalInformationType" minOccurs="0"
+                maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
 
+    <!-- Aggregerte typer -->
+
     <xs:complexType name="PoliceCertificateType">
         <xs:sequence>
-            <xs:element name="ID" type="xs:normalizedString"/>
-            <xs:element name="Type" type="xs:string" minOccurs="0"/>
-            <xs:element name="ValidTo" type="xs:date" minOccurs="0"/>
-            <xs:element name="Documentation" type="DocumentationType" minOccurs="0"/>
+            <xs:element name="ID" type="IdentifierType"/>
+            <xs:element name="Type" type="CodeType" minOccurs="0"/>
+            <xs:element name="ValidTo" type="DateType" minOccurs="0"/>
+            <xs:element name="Documentation" type="AttachmentType" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
     <xs:complexType name="EducationType">
         <xs:sequence>
-            <xs:element name="ID" type="xs:normalizedString"/>
-            <xs:element name="Title" type="xs:string" minOccurs="0"/>
-            <xs:element name="EducationDegree" type="xs:string" minOccurs="0"/>
-            <xs:element name="SubjectArea" type="xs:string" minOccurs="0"/>
+            <xs:element name="ID" type="IdentifierType"/>
+            <xs:element name="Title" type="TextType" minOccurs="0"/>
+            <xs:element name="EducationDegree" type="CodeType" minOccurs="0"/>
             <xs:element name="Period" type="PeriodType" minOccurs="0"/>
-            <xs:element name="Documentation" type="DocumentationType" minOccurs="0"/>
+            <xs:element name="Documentation" type="AttachmentType" minOccurs="0"/>
             <xs:element name="Contact" type="ContactType" minOccurs="0"/>
-            <xs:element name="EducationReference" type="ReferenceType" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
     <xs:complexType name="CourseType">
         <xs:sequence>
-            <xs:element name="ID" type="xs:normalizedString"/>
-            <xs:element name="Title" type="xs:string" minOccurs="0"/>
-            <xs:element name="Type" type="xs:string" minOccurs="0"/>
-            <xs:element name="Version" type="xs:decimal" minOccurs="0"/>
+            <xs:element name="ID" type="IdentifierType"/>
+            <xs:element name="Title" type="TextType" minOccurs="0"/>
+            <xs:element name="VersionID" type="IdentifierType" minOccurs="0"/>
             <xs:element name="Period" type="PeriodType" minOccurs="0"/>
-            <xs:element name="SupplierParty" type="PartyType" minOccurs="0"/>
-            <xs:element name="Documentation" type="DocumentationType" minOccurs="0"/>
-            <xs:element name="CourseReference" type="ReferenceType" minOccurs="0"/>
+            <xs:element name="SupplierParty" type="SupplierPartyType" minOccurs="0"/>
+            <xs:element name="Documentation" type="AttachmentType" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
     <xs:complexType name="CertificationType">
         <xs:sequence>
-            <xs:element name="ID" type="xs:normalizedString"/>
-            <xs:element name="Title" type="xs:string" minOccurs="0"/>
-            <xs:element name="Type" type="xs:token" minOccurs="0"/>
-            <xs:element name="Version" type="xs:decimal" minOccurs="0"/>
-            <xs:element name="ValidTo" type="xs:date" minOccurs="0"/>
-            <xs:element name="SupplierParty" type="PartyType" minOccurs="0"/>
-            <xs:element name="Documentation" type="DocumentationType" minOccurs="0"/>
-            <xs:element name="CertificationReference" type="ReferenceType" minOccurs="0"/>
+            <xs:element name="ID" type="IdentifierType"/>
+            <xs:element name="Title" type="TextType" minOccurs="0"/>
+            <xs:element name="VersionID" type="IdentifierType" minOccurs="0"/>
+            <xs:element name="ValidTo" type="DateType" minOccurs="0"/>
+            <xs:element name="SupplierParty" type="SupplierPartyType" minOccurs="0"/>
+            <xs:element name="Documentation" type="AttachmentType" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
     <xs:complexType name="LanguageSkillsType">
         <xs:sequence>
-            <xs:element name="ID" type="xs:normalizedString"/>
-            <xs:element name="Language" type="xs:string" minOccurs="0"/>
+            <xs:element name="ID" type="IdentifierType"/>
+            <xs:element name="Language" type="CodeType" minOccurs="0"/>
             <xs:element name="Scandinavian" type="xs:boolean" minOccurs="0"/>
-            <xs:element name="OralSkill" type="xs:string" minOccurs="0"/>
-            <xs:element name="WrittenSkill" type="xs:string" minOccurs="0"/>
+            <xs:element name="OralSkill" type="CodeType" minOccurs="0"/>
+            <xs:element name="WrittenSkill" type="CodeType" minOccurs="0"/>
             <xs:element name="Contact" type="ContactType" minOccurs="0"/>
-            <xs:element name="LanguageSkillsReference" type="ReferenceType" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
     <xs:complexType name="ProjectExperienceType">
         <xs:sequence>
-            <xs:element name="ID" type="xs:normalizedString"/>
-            <xs:element name="ExperienceType" type="xs:string" minOccurs="0"/>
-            <xs:element name="IndustryType" type="xs:string" minOccurs="0"/>
-            <xs:element name="Workplace" type="xs:string" minOccurs="0"/>
-            <xs:element name="JobSector" type="xs:string" minOccurs="0"/> <!-- Skal vi ta dette med? -->
-            <xs:element name="CompanyParty" type="PartyType" minOccurs="0"/> <!-- Navn og endpointID -->
+            <xs:element name="ID" type="IdentifierType"/>
+            <xs:element name="ExperienceType" type="CodeType" minOccurs="0"/>
+            <xs:element name="IndustryType" type="CodeType" minOccurs="0"/>
+            <xs:element name="Workplace" type="CodeType" minOccurs="0"/>
+            <xs:element name="JobSector" type="CodeType" minOccurs="0"/>
+            <xs:element name="Company" type="CompanyType" minOccurs="0"/>
             <xs:element name="Period" type="PeriodType" minOccurs="0"/>
             <xs:element name="ExperienceDescription" type="ExperienceDescriptionType" minOccurs="0"/>
             <xs:element name="ExperienceValue" type="ExperienceValueType" minOccurs="0"/>
             <xs:element name="Contact" type="ContactType" minOccurs="0"/>
-            <xs:element name="EducationReference" type="ReferenceType" minOccurs="0"/> <!--  Finn et nytt passende navn -->
-            <xs:element name="ProjectExperienceReference" type="ReferenceType" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
     <xs:complexType name="WorkExperienceType">
         <xs:sequence>
-            <xs:element name="ID" type="xs:normalizedString"/>
-            <xs:element name="PositionLevel" type="xs:string" minOccurs="0"/>
-            <xs:element name="IndustryType" type="xs:string" minOccurs="0"/>
-            <xs:element name="Workplace" type="xs:string" minOccurs="0"/>
-            <xs:element name="JobSector" type="xs:string" minOccurs="0"/> <!-- Skal vi ta dette med? -->
-            <xs:element name="CompanyParty" type="PartyType" minOccurs="0"/> <!-- Navn og endpointID -->
-            <xs:element name="Period" type="PeriodType" minOccurs="0"/>
-            <xs:element name="WorkExperienceDescription" type="ExperienceDescriptionType" minOccurs="0"/>
-            <xs:element name="Contact" type="ContactType" minOccurs="0"/>
-            <xs:element name="EducationReference" type="ReferenceType" minOccurs="0"/> <!--  Finn et nytt passende navn -->
-            <xs:element name="WorkExperienceReference" type="ReferenceType" minOccurs="0"/>
-        </xs:sequence>
-    </xs:complexType>
-
-    <xs:complexType name="ClearanceType">
-        <xs:sequence>
-            <xs:element name="ID" type="xs:normalizedString"/>
-            <xs:element name="Title" type="xs:string" minOccurs="0"/>
-            <xs:element name="Type" type="xs:string" minOccurs="0"/>
-            <xs:element name="Level" type="xs:string" minOccurs="0"/>
-            <xs:element name="ExpirationDate" type="xs:date" minOccurs="0"/>
-            <xs:element name="Documentation" type="DocumentationType" minOccurs="0"/>
-            <xs:element name="Description" type="xs:string" minOccurs="0"/>
-            <xs:element name="ClearanceReference" type="ReferenceType" minOccurs="0"/>
-        </xs:sequence>
-    </xs:complexType>
-
-    <xs:complexType name="ReferenceType">
-        <xs:sequence>
             <xs:element name="ID" type="IdentifierType"/>
-            <xs:element name="Party" type="PartyType" minOccurs="0"/> <!-- Navn og endpointID -->
-            <xs:element name="Relationship" type="xs:string" minOccurs="0"/>
+            <xs:element name="PositionLevel" type="CodeType" minOccurs="0"/>
+            <xs:element name="IndustryType" type="CodeType" minOccurs="0"/>
+            <xs:element name="Workplace" type="CodeType" minOccurs="0"/>
+            <xs:element name="JobSector" type="CodeType" minOccurs="0"/>
+            <xs:element name="Company" type="CompanyType" minOccurs="0"/>
+            <xs:element name="Period" type="PeriodType" minOccurs="0"/>
+            <xs:element name="WorkExperienceDescription" type="ExperienceDescriptionType"
+                minOccurs="0"/>
             <xs:element name="Contact" type="ContactType" minOccurs="0"/>
-            <xs:element name="RequestReference" type="ReferenceType" minOccurs="0"/> <!-- Finn et nytt passende navn -->
         </xs:sequence>
     </xs:complexType>
 
     <xs:complexType name="SkillsType">
         <xs:sequence>
-            <xs:element name="ID" type="xs:normalizedString"/>
-            <xs:element name="Title" type="xs:string" minOccurs="0"/>
-            <xs:element name="Type" type="xs:string" minOccurs="0"/>
-            <xs:element name="Version" type="xs:decimal" minOccurs="0"/>
-            <xs:element name="LastPractice" type="xs:date" minOccurs="0"/>
-            <xs:element name="MinimumLengthPractice" type="UomType" minOccurs="0"/>
+            <xs:element name="ID" type="IdentifierType"/>
+            <xs:element name="Type" type="CodeType" minOccurs="0"/>
+            <xs:element name="VersionID" type="IdentifierType" minOccurs="0"/>
+            <xs:element name="LastPractice" type="DateType" minOccurs="0"/>
+            <xs:element name="MinimumLengthPractice" type="QuantityType" minOccurs="0"/>
             <xs:element name="Contact" type="ContactType" minOccurs="0"/>
-            <xs:element name="SkillsAppliedReference" type="ReferenceType" minOccurs="0"/>
-            <xs:element name="SkillsReference" type="ReferenceType" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
-    <xs:complexType name="PersonalSkillsType">
+    <xs:complexType name="ClearanceType">
         <xs:sequence>
-            <xs:element name="ID" type="xs:normalizedString"/>
-            <xs:element name="Title" type="xs:string" minOccurs="0"/>
-            <xs:element name="Type" type="xs:string" minOccurs="0"/>
-            <xs:element name="Description" type="xs:string" minOccurs="0"/>
-            <xs:element name="Contact" type="ContactType" minOccurs="0"/>
-            <xs:element name="PersonalSkillsReference" type="ReferenceType" minOccurs="0"/>
+            <xs:element name="ID" type="IdentifierType"/>
+            <xs:element name="Level" type="CodeType" minOccurs="0"/>
+            <xs:element name="ExpirationDate" type="DateType" minOccurs="0"/>
+            <xs:element name="Documentation" type="AttachmentType" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
     <xs:complexType name="PersonalInformationType">
         <xs:sequence>
-            <xs:element name="ID" type="xs:normalizedString"/>
-            <xs:element name="Name" type="xs:string"/>
-            <xs:element name="PostalAddress" type="PostalAdressType"/>
+            <xs:element name="ID" type="IdentifierType"/>
+            <xs:element name="Name" type="TextType" minOccurs="0"/>
+            <xs:element name="PostalAddress" type="PostalAddressType" minOccurs="0"/>
             <xs:element name="Contact" type="ContactType" minOccurs="0"/>
-            <xs:element name="SocialMedia" type="SocialMediaType" minOccurs="0" maxOccurs="unbounded"/>
-        </xs:sequence>
-    </xs:complexType>
-
-    <xs:complexType name="SocialMediaType">
-        <xs:sequence>
-            <xs:element name="ID" type="xs:normalizedString"/>
-            <xs:element name="Title" type="xs:string" minOccurs="0"/>
-            <xs:element name="Type" type="xs:string" minOccurs="0"/>
-            <xs:element name="Documentation" type="DocumentationType" minOccurs="0"/>
-        </xs:sequence>
-    </xs:complexType>
-
-    <xs:complexType name="InterestType">
-        <xs:sequence>
-            <xs:element name="ID" type="IdentifierType" minOccurs="0"/>
-            <xs:element name="Description" type="xs:string" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
     <xs:complexType name="AdditionalInformationType">
         <xs:sequence>
-            <xs:element name="ID" type="IdentifierType" minOccurs="0"/>
-            <xs:element name="Title" type="xs:string" minOccurs="0"/>
-            <xs:element name="Description" type="xs:string" minOccurs="0"/>
-            <xs:element name="Documentation" type="DocumentationType" minOccurs="0" maxOccurs="unbounded"/> <!-- se på igjen. Skal det være embedded istedet? -->
+            <xs:element name="ID" type="IdentifierType"/>
+            <xs:element name="Title" type="TextType" minOccurs="0"/>
+            <xs:element name="Description" type="TextType" minOccurs="0"/>
+            <xs:element name="Documentation" type="AttachmentType" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
-    <xs:complexType name="IdentifierType">
-        <xs:simpleContent>
-            <xs:extension base="xs:normalizedString">
-                <xs:attribute name="schemeID" type="xs:string"/>
-            </xs:extension>
-        </xs:simpleContent>
+    <xs:complexType name="SenderPartyType">
+        <xs:annotation>
+            <xs:documentation> Modelled after UBL 2.1 cac:SupplierPartyType pattern. Represents the
+                party sending the CV. </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Party" type="PartyType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ReceiverPartyType">
+        <xs:annotation>
+            <xs:documentation> Modelled after UBL 2.1 cac:CustomerPartyType pattern. Represents the
+                party receiving the CV. </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Party" type="PartyType"/>
+        </xs:sequence>
     </xs:complexType>
 
     <xs:complexType name="PartyType">
+        <xs:annotation>
+            <xs:documentation> Modelled after UBL 2.1 cac:PartyType, but only elements needed for
+                ehf-cv are included </xs:documentation>
+        </xs:annotation>
         <xs:sequence>
             <xs:element name="EndpointID" type="IdentifierType" minOccurs="0"/>
-            <xs:element name="Name" type="xs:string" minOccurs="0"/>
+            <xs:element name="PartyName" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Name" type="TextType"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="PostalAddress" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Country" minOccurs="0">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="IdentificationCode" type="CodeType"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
             <xs:element name="Contact" type="ContactType" minOccurs="0"/>
-            <xs:element name="CountryCode" type="xs:normalizedString" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
     <xs:complexType name="ContactType">
+        <xs:annotation>
+            <xs:documentation> Modelled after UBL 2.1 cac:ContactType, Role is an ehf-cv specific
+                element, else only elements needed for ehf-cv are included </xs:documentation>
+        </xs:annotation>
         <xs:sequence>
-            <xs:element name="Name" type="xs:string" minOccurs="0"/>
-            <xs:element name="Role" type="xs:string" minOccurs="0"/>
-            <xs:element name="Telephone" type="xs:string" minOccurs="0"/>
-            <xs:element name="ElectronicMail" type="xs:string" minOccurs="0"/>
+            <xs:element name="Name" type="TextType" minOccurs="0"/>
+            <xs:element name="Role" type="CodeType" minOccurs="0"/>
+            <xs:element name="Telephone" type="TextType" minOccurs="0"/>
+            <xs:element name="ElectronicMail" type="TextType" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
-    <xs:complexType name="DocumentationType">
+    <xs:complexType name="AttachmentType">
+        <xs:annotation>
+            <xs:documentation> Modelled after UBL 2.1 cac:AttachmentType, only elements needed for
+                ehf-cv are included </xs:documentation>
+        </xs:annotation>
         <xs:sequence>
-            <xs:element name="RegistrationType" type="xs:string" minOccurs="0"/>
-            <xs:element name="RegistrationNumber" type="xs:integer" minOccurs="0"/>
-            <xs:element name="EmbeddedDocumentBinaryObject" type="EmbeddedDocumentBinaryObjectType" minOccurs="0"/> <!-- Embedded Document -->
-            <xs:element name="CandidateNumber" type="xs:integer" minOccurs="0"/>
-            <xs:element name="URI" type="xs:normalizedString" minOccurs="0"/>
+            <xs:element name="EmbeddedDocumentBinaryObject" type="EmbeddedDocumentBinaryObjectType"
+                minOccurs="0" maxOccurs="1"/>
+            <xs:element name="ExternalReference" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="URI" type="xs:normalizedString"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
         </xs:sequence>
     </xs:complexType>
 
     <xs:complexType name="EmbeddedDocumentBinaryObjectType">
         <xs:simpleContent>
-            <xs:extension base="xs:normalizedString">
+            <xs:extension base="xs:base64Binary">
                 <xs:attribute name="mimeCode" type="xs:normalizedString"/>
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
 
-    <xs:complexType name="PeriodType">
+    <xs:complexType name="SupplierPartyType">
+        <xs:annotation>
+            <xs:documentation> Modelled after UBL 2.1 cac:SupplierPartyType pattern. Represents the
+                party that supplied a course or issued a certification. </xs:documentation>
+        </xs:annotation>
         <xs:sequence>
-            <xs:element name="StartDate" type="xs:date" minOccurs="0"/>
-            <xs:element name="EndDate" type="xs:date" minOccurs="0"/>
+            <xs:element name="Party" type="PartyType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="CompanyType">
+        <xs:annotation>
+            <xs:documentation>
+                Represents a historical employer or client in a CV context.
+                Intentionally separate from PartyType: CompanyType is a reference to a past
+                organisation (e.g. a former employer), not an active party in the PEPPOL network.
+                EndpointID and Contact are therefore omitted.
+                Element names (PartyIdentification/ID, PartyName/Name) are modelled after
+                UBL 2.1 cac:PartyType for familiarity, but the type itself has no UBL equivalent.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="PartyIdentification" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="ID" type="IdentifierType"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="PartyName" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Name" type="TextType"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PeriodType">
+        <xs:annotation>
+            <xs:documentation> Modelled after UBL 2.1 cac:PeriodType, only elements needed for
+                ehf-cv are included </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="StartDate" type="DateType" minOccurs="0"/>
+            <xs:element name="EndDate" type="DateType" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
     <xs:complexType name="ExperienceDescriptionType">
+        <xs:annotation>
+            <xs:documentation>
+                EHF CV-specific type with no UBL 2.1 equivalent.
+                UBL 2.1 has no aggregate type for describing work or project experience.
+                The closest UBL elements are cbc:Percent (used for tax rates and discounts,
+                not position percentage) and cbc:Description (generic text, less precise
+                than Role and Activities). These do not provide meaningful alignment and
+                the EHF CV-specific naming is retained for clarity.
+            </xs:documentation>
+        </xs:annotation>
         <xs:sequence>
             <xs:element name="PositionPercent" type="xs:integer" minOccurs="0"/>
-            <xs:element name="Role" type="xs:string" minOccurs="0"/>
-            <xs:element name="Activities" type="xs:string" minOccurs="0"/>
+            <xs:element name="Role" type="CodeType" minOccurs="0"/>
+            <xs:element name="Activities" type="TextType" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
     <xs:complexType name="ExperienceValueType">
         <xs:sequence>
-            <xs:element name="ProjectParticipation" type="UomType" minOccurs="0"/>
-            <xs:element name="ProjectSize" type="UomType" minOccurs="0"/>
-            <xs:element name="ProjectValue" type="ValueType" minOccurs="0"/>
+            <xs:element name="ProjectParticipation" type="QuantityType" minOccurs="0"/>
+            <xs:element name="ProjectSize" type="QuantityType" minOccurs="0"/>
+            <xs:element name="ProjectValue" type="AmountType" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
-    
-    <xs:complexType name="UomType">
+
+    <xs:complexType name="QuantityType">
+        <xs:annotation>
+            <xs:documentation> Modelled after UBL 2.1 udt:QuantityType
+                (UnqualifiedDataTypes-2.1.xsd, UN/CEFACT CCTS). </xs:documentation>
+        </xs:annotation>
         <xs:simpleContent>
-            <xs:extension base="xs:integer">
-                <xs:attribute name="unitOfMeasure" type="xs:string"/>
+            <xs:extension base="xs:decimal">
+                <xs:attribute name="unitCode" type="xs:normalizedString"/>
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
-    
-    <xs:complexType name="ValueType">
+
+    <xs:complexType name="AmountType">
+        <xs:annotation>
+            <xs:documentation> Modelled after UBL 2.1 udt:AmountType (UnqualifiedDataTypes-2.1.xsd,
+                UN/CEFACT CCTS) </xs:documentation>
+        </xs:annotation>
         <xs:simpleContent>
-            <xs:extension base="xs:normalizedString">
+            <xs:extension base="xs:decimal">
                 <xs:attribute name="currencyID" type="xs:normalizedString"/>
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
 
-    <xs:complexType name="PostalAdressType">
+    <xs:complexType name="PostalAddressType">
         <xs:sequence>
-            <xs:element name="StreetName" type="xs:string" minOccurs="0"></xs:element>
-            <xs:element name="AdditionalStreetName" type="xs:string" minOccurs="0"></xs:element>
-            <xs:element name="CityName" type="xs:string" minOccurs="0"></xs:element>
-            <xs:element name="PostalZone" type="xs:string" minOccurs="0"></xs:element>
-            <xs:element name="CountryCode" type="xs:normalizedString" minOccurs="0"/>
+            <xs:element name="StreetName" type="TextType" minOccurs="0"/>
+            <xs:element name="AdditionalStreetName" type="TextType" minOccurs="0"/>
+            <xs:element name="CityName" type="TextType" minOccurs="0"/>
+            <xs:element name="PostalZone" type="TextType" minOccurs="0"/>
+            <xs:element name="CountryCode" type="CodeType" minOccurs="0"/>
         </xs:sequence>
+    </xs:complexType>
+
+    <!-- Primitive typer -->
+
+    <xs:complexType name="IdentifierType">
+        <xs:annotation>
+            <xs:documentation> Modelled after UBL 2.1 udt:IdentifierType
+                (UnqualifiedDataTypes-2.1.xsd, UN/CEFACT CCTS). Used directly for all identifier
+                elements (ID, CustomizationID, ProfileID etc.) without named subtypes, as the
+                element name provides sufficient semantic context in EHF CV. Only the schemeID
+                attribute is included; other UBL attributes (schemeName, schemeAgencyID, etc.) are
+                omitted as they are not used in EHF CV. </xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:extension base="xs:normalizedString">
+                <xs:attribute name="schemeID" type="xs:normalizedString"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="TextType">
+        <xs:annotation>
+            <xs:documentation> Modelled after UBL 2.1 udt:TextType (UnqualifiedDataTypes-2.1.xsd,
+                UN/CEFACT CCTS). Used directly for all text elements without named subtypes, as the
+                element name provides sufficient semantic context in EHF CV. All attributes are
+                omitted as they are not used in EHF CV. </xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:extension base="xs:string"/>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="DateType">
+        <xs:annotation>
+            <xs:documentation> Modelled after UBL 2.1 udt:DateType (UnqualifiedDataTypes-2.1.xsd,
+                UN/CEFACT CCTS). Used directly for all date elements without named subtypes, as the
+                element name provides sufficient semantic context in EHF CV. </xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:extension base="xs:date"/>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="TimeType">
+        <xs:annotation>
+            <xs:documentation> Modelled after UBL 2.1 udt:TimeType (UnqualifiedDataTypes-2.1.xsd,
+                UN/CEFACT CCTS). Used directly for all time elements without named subtypes, as the
+                element name provides sufficient semantic context in EHF CV. </xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:extension base="xs:time"/>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="CodeType">
+        <xs:annotation>
+            <xs:documentation> Modelled after UBL 2.1 udt:CodeType (UnqualifiedDataTypes-2.1.xsd,
+                UN/CEFACT CCTS). Used directly for all code elements without named subtypes, as the
+                element name provides sufficient semantic context in EHF CV. </xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:extension base="xs:normalizedString"> </xs:extension>
+        </xs:simpleContent>
     </xs:complexType>
 
 </xs:schema>

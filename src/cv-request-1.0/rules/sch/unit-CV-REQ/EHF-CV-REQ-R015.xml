@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testSet xmlns="http://difi.no/xsd/vefa/validator/1.0"
+	configuration="ehf-cv-request-1.0">
+	<assert>
+		<description>Verify that required total experience is not empty</description>
+		<scope>EHF-CV-REQ-R015</scope>
+	</assert>
+
+	<test id="1">
+		<assert>
+			<success>EHF-CV-REQ-R015</success>
+		</assert>
+		<CVRequest xmlns="urn:fdc:anskaffelser.no:2019:ehf:schema:CVRequest-1">
+
+			<ProjectExperience>
+				<RequiredTotalExperience>
+					<MinimumYearsExperience>2</MinimumYearsExperience>
+					<MaximumYearsExperience>6</MaximumYearsExperience>
+				</RequiredTotalExperience>
+			</ProjectExperience>
+
+		</CVRequest>
+	</test>
+
+	<test id="2">
+		<assert>
+			<success>EHF-CV-REQ-R015</success>
+		</assert>
+		<CVRequest xmlns="urn:fdc:anskaffelser.no:2019:ehf:schema:CVRequest-1">
+
+			<ProjectExperience>
+				<RequiredTotalExperience>
+					<MinimumYearsExperience>2</MinimumYearsExperience>
+				</RequiredTotalExperience>
+			</ProjectExperience>
+
+		</CVRequest>
+	</test>
+
+	<test id="3">
+		<assert>
+			<success>EHF-CV-REQ-R015</success>
+		</assert>
+		<CVRequest xmlns="urn:fdc:anskaffelser.no:2019:ehf:schema:CVRequest-1">
+
+			<ProjectExperience>
+				<RequiredTotalExperience>
+					<MaximumYearsExperience>6</MaximumYearsExperience>
+				</RequiredTotalExperience>
+			</ProjectExperience>
+
+		</CVRequest>
+	</test>
+
+	<test id="4">
+		<assert>
+			<success>EHF-CV-REQ-R015</success>
+		</assert>
+		<CVRequest xmlns="urn:fdc:anskaffelser.no:2019:ehf:schema:CVRequest-1">
+
+			<ProjectExperience>
+				<AlternativeProjectExperience>
+					<RequiredTotalExperience>
+						<MinimumYearsExperience>3</MinimumYearsExperience>
+					</RequiredTotalExperience>
+				</AlternativeProjectExperience>
+			</ProjectExperience>
+
+		</CVRequest>
+	</test>
+
+	<test id="5">
+		<assert>
+			<error>EHF-CV-REQ-R015</error>
+		</assert>
+		<CVRequest xmlns="urn:fdc:anskaffelser.no:2019:ehf:schema:CVRequest-1">
+
+			<ProjectExperience>
+				<RequiredTotalExperience/>
+			</ProjectExperience>
+
+		</CVRequest>
+	</test>
+
+</testSet>

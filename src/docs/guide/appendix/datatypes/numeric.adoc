@@ -1,0 +1,25 @@
+
+= Numeric
+
+Numeric values state a plain number with no associated unit of measure or currency. Numeric is
+different from Quantity in that no unit of measure is given, and different from Percentage in
+that the value is not a fraction of a hundred.
+
+In EHF CV, Numeric is used for counts such as a number of years of experience.
+
+====
+IMPORTANT:  No restriction on number of decimals for numeric values.
+====
+
+[cols="1s,1,1,1", options="header"]
+|===
+|Component
+|Use
+|Primitive Type
+|Example
+
+|Content
+|Mandatory
+|Decimal
+|5
+|===

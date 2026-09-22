@@ -10,7 +10,7 @@ For each project experience, there must be an experience type. In some cases it 
 related to a specific industry, workplace (country) or sector.
 
 The total years of experience can be specified in element `cv-req:RequiredTotalExperience`. It is also possible to specify a
-minimum number of years (`cv-req:MinimumExperience`) and a maximum number of years (`cv-req:MaximumExperience`). The candidate must fulfill
+minimum number of years (`cv-req:MinimumYearsExperience`) and a maximum number of years (`cv-req:MaximumYearsExperience`). The candidate must fulfill
 the minimum requirement. Another option is to have either minimum or maximum years of project excperience.
 
 In the CV request, the Contracting Authority can state the requested period for a project experience using element
@@ -30,19 +30,19 @@ project participation (normally months), the size of project and the total value
 include::../{snippet-dir-cv-request}/cv-request.xml[tags=ProjectExperience]
 ----
 <1> Project experience identifier
-<2> Project experience requirement - indicate whether a candidate needs to fulfill the project requirement. According to codelist Requirement code (chapter 5.5).
-<3> Type of project experience according to codelist Classification of Occupations (Styrk98) (chapter 5.8)
-<4> Type of industry according to codelist Classification of standard industrial classification (NACE) (chapter 5.9)
-<5> Workplace according to codelist ISO 3166-1:Alpha2 Country codes (chapter 5.12)
+<2> Project experience requirement - indicate whether a candidate needs to fulfill the project requirement. According to codelist Requirement code
+<3> Type of project experience according to codelist Classification of Occupations (Styrk98)
+<4> Type of industry according to codelist Classification of standard industrial classification (NACE)
+<5> Workplace according to codelist ISO 3166-1:Alpha2 Country codes
 <6> Job sector (private, public or other)
 <7> Total year of experience
 <8> Period for the experience
 <9> Candidate's position percent
-<10> Role in project according to codelist Classification of Occupations (Styrk98) (chapter 5.8)
+<10> Role in project according to codelist Classification of Occupations (Styrk98)
 <11> Description of project activities
 <12> Project participation including unit of measure
 <13> Total Project size including unit of measure
-<14> Project value in money. Currency according to code list ISO 4217 Currency codes (chapter 5.13)
+<14> Project value in money. Currency according to code list ISO 4217 Currency codes
 
 .Example of the requested project experience in the CV request with alternative requirement
 [source, xml, indent=0]
@@ -50,28 +50,24 @@ include::../{snippet-dir-cv-request}/cv-request.xml[tags=ProjectExperience]
 include::../{snippet-dir-cv-request}/cv-request.xml[tags=ProjectExperienceAlternative]
 ----
 <1> Project experience identifier
-<2> Project experience requirement - indicate whether a candidate needs to fulfill the project requirement.  According to codelist Requirement code (chapter 5.5).
-<3> Type of project experience according to codelist Classification of Occupations (Styrk98) (chapter 5.8)
-<4> Type of industry according to codelist Classification of standard industrial classification (NACE) (chapter 5.9)
-<5> Workplace according to code list ISO 3166-1:Alpha2 Country codes (chapter 5.12)
+<2> Project experience requirement - indicate whether a candidate needs to fulfill the project requirement.  According to codelist Requirement code
+<3> Type of project experience according to codelist Classification of Occupations (Styrk98)
+<4> Type of industry according to codelist Classification of standard industrial classification (NACE)
+<5> Workplace according to code list ISO 3166-1:Alpha2 Country codes
 <6> Job sector (private, public or other)
 <7> Total year of experience
 <8> Period for the experience
 <9> Candidate's position percent
-<10> Role in project according to codelist Classification of Occupations (Styrk98) (chapter 5.8)
+<10> Role in project according to codelist Classification of Occupations (Styrk98)
 <11> Description of project activities
 <12> Project participation including unit of measure
 <13> Total Project size including unit of measure
-<14> Project value in money. Currency according to code list ISO 4217 Currency codes (chapter 5.13)
+<14> Project value in money. Currency according to code list ISO 4217 Currency codes
 <15> Alternative project experience
 
 == Information specific to CV
 
 Based on the project experience requirement from CV request, the Economic Operator must document the candidate's project experience.
-The element `cv:EducationReference` and `cv:ProjectExperienceReference` needs to be used in the procurement process,
-not in the job application process. The education reference corresponds to the educational requirement in the CV request when
-the contracting authority accepts relevant experience. The project experience reference corresponds to project experience in the
-CV request.
 
 .Example of a description of project experience in CV as a response to requested project experience in CV request
 [source, xml, indent=0]
@@ -79,16 +75,16 @@ CV request.
 include::../{snippet-dir-cv}/cv.xml[tags=ProjectExperience]
 ----
 <1> Project experience identifier
-<2> Type of project experience according to codelist Classification of Occupations (Styrk98) (chapter 5.8)
-<3> Type of industry according to codelist Classification of standard industrial classification (NACE) (chapter 5.9)
-<4> Workplace according to code list ISO 3166-1:Alpha2 Country codes (chapter 5.12)
+<2> Type of project experience according to codelist Classification of Occupations (Styrk98)
+<3> Type of industry according to codelist Classification of standard industrial classification (NACE)
+<4> Workplace according to code list ISO 3166-1:Alpha2 Country codes
 <5> Job sector (private, public or other)
 <6> Company information
 <7> Period for the experience
 <8> Position percent in the project
-<9> Role in project according to codelist Classification of Occupations (Styrk98) (chapter 5.8)
+<9> Role in project according to codelist Classification of Occupations (Styrk98)
 <10> Description of project activities
 <11> Project participation including unit of measure
 <12> Total Project size including unit of measure
-<13> Project value in money. Currency according to code list ISO 4217 Currency codes (chapter 5.13)
+<13> Project value in money. Currency according to code list ISO 4217 Currency codes
 <14> Project contact person

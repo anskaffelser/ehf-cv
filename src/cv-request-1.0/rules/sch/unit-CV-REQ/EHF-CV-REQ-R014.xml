@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testSet xmlns="http://difi.no/xsd/vefa/validator/1.0"
+	configuration="ehf-cv-request-1.0">
+	<assert>
+		<description>Verify that an experience description is not empty</description>
+		<scope>EHF-CV-REQ-R014</scope>
+	</assert>
+
+	<test id="1">
+		<assert>
+			<success>EHF-CV-REQ-R014</success>
+		</assert>
+		<CVRequest xmlns="urn:fdc:anskaffelser.no:2019:ehf:schema:CVRequest-1">
+
+			<ProjectExperience>
+				<ExperienceDescription>
+					<PositionPercent>100</PositionPercent>
+				</ExperienceDescription>
+			</ProjectExperience>
+
+		</CVRequest>
+	</test>
+
+	<test id="2">
+		<assert>
+			<success>EHF-CV-REQ-R014</success>
+		</assert>
+		<CVRequest xmlns="urn:fdc:anskaffelser.no:2019:ehf:schema:CVRequest-1">
+
+			<ProjectExperience>
+				<ExperienceDescription>
+					<Role>2130110</Role>
+				</ExperienceDescription>
+			</ProjectExperience>
+
+		</CVRequest>
+	</test>
+
+	<test id="3">
+		<assert>
+			<success>EHF-CV-REQ-R014</success>
+		</assert>
+		<CVRequest xmlns="urn:fdc:anskaffelser.no:2019:ehf:schema:CVRequest-1">
+
+			<WorkExperience>
+				<WorkExperienceDescription>
+					<Activities>Must have done analysis using Python.</Activities>
+				</WorkExperienceDescription>
+			</WorkExperience>
+
+		</CVRequest>
+	</test>
+
+	<test id="4">
+		<assert>
+			<success>EHF-CV-REQ-R014</success>
+		</assert>
+		<CVRequest xmlns="urn:fdc:anskaffelser.no:2019:ehf:schema:CVRequest-1">
+
+			<ProjectExperience>
+				<AlternativeProjectExperience>
+					<ExperienceDescription>
+						<Role>2130114</Role>
+					</ExperienceDescription>
+				</AlternativeProjectExperience>
+			</ProjectExperience>
+
+		</CVRequest>
+	</test>
+
+	<test id="5">
+		<assert>
+			<error>EHF-CV-REQ-R014</error>
+		</assert>
+		<CVRequest xmlns="urn:fdc:anskaffelser.no:2019:ehf:schema:CVRequest-1">
+
+			<ProjectExperience>
+				<ExperienceDescription/>
+			</ProjectExperience>
+
+		</CVRequest>
+	</test>
+
+	<test id="6">
+		<assert>
+			<error>EHF-CV-REQ-R014</error>
+		</assert>
+		<CVRequest xmlns="urn:fdc:anskaffelser.no:2019:ehf:schema:CVRequest-1">
+
+			<WorkExperience>
+				<WorkExperienceDescription/>
+			</WorkExperience>
+
+		</CVRequest>
+	</test>
+
+</testSet>

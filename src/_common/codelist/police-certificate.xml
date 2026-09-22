@@ -2,7 +2,7 @@
 <CodeList xmlns="urn:fdc:difi.no:2017:vefa:structure:CodeList-1">
 
     <Title>Police Certificate codelist</Title>
-    <Identifier>PoliceCerticate</Identifier>
+    <Identifier>police-certificate</Identifier>
     <Version>1.0</Version>
     
     <!-- tag::PoliceCertificate[] -->
@@ -33,5 +33,6 @@
         <Id>UttømmendeUtvidet</Id>
         <Name>Uttømmende og utvidet</Name>
     </Code>
+    </CodeList>
     <!-- end::PoliceCertificate[] -->
 

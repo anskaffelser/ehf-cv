@@ -13,8 +13,8 @@
 		<CVRequest xmlns="urn:fdc:anskaffelser.no:2019:ehf:schema:CVRequest-1">
 
       <RequiredTotalExperience>
-        <MinimumExperience>3</MinimumExperience>
-        <MaximumExperience>7</MaximumExperience>
+        <MinimumYearsExperience>3</MinimumYearsExperience>
+        <MaximumYearsExperience>7</MaximumYearsExperience>
       </RequiredTotalExperience>
 
 		</CVRequest>
@@ -27,8 +27,8 @@
     <CVRequest xmlns="urn:fdc:anskaffelser.no:2019:ehf:schema:CVRequest-1">
 
       <RequiredTotalExperience>
-        <MinimumExperience>7</MinimumExperience>
-        <MaximumExperience>7</MaximumExperience>
+        <MinimumYearsExperience>7</MinimumYearsExperience>
+        <MaximumYearsExperience>7</MaximumYearsExperience>
       </RequiredTotalExperience>
 
     </CVRequest>
@@ -41,8 +41,8 @@
     <CVRequest xmlns="urn:fdc:anskaffelser.no:2019:ehf:schema:CVRequest-1">
 
       <RequiredTotalExperience>
-        <MinimumExperience>10</MinimumExperience>
-        <MaximumExperience>7</MaximumExperience>
+        <MinimumYearsExperience>10</MinimumYearsExperience>
+        <MaximumYearsExperience>7</MaximumYearsExperience>
       </RequiredTotalExperience>
 
     </CVRequest>

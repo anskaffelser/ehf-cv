@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <Syntax xmlns="urn:fdc:difi.no:2017:vefa:structure:Syntax-1">
 
     <Term>cv-request</Term>
-    <Name>EHF CV Request 1.0 RC1</Name>
+    <Name>EHF CV Request 1.0</Name>
     <Property key="sch:prefix">EHF-CV-REQ</Property>
     <Property key="sch:identifier">cv-request-basic-1.0</Property>
 
@@ -14,397 +14,440 @@
 
         <Element>
             <Term>cv-req:CustomizationID</Term>
-            <Name>Document Identifier</Name>
-            <Description>Identifies the specification of content and rules that apply to the transaction.</Description>
-            <Value type="FIXED">...</Value>
+            <Name>Transaction identifier</Name>
+            <Description>Identification of the transaction to be used if the message is sent via the Peppol network.</Description>
+            <DataType>Identifier</DataType>
+            <Value type="FIXED">urn:fdc:anskaffelser.no:2019:ehf:cvrequest:1</Value>
         </Element>
 
         <Element>
             <Term>cv-req:ProfileID</Term>
-            <Name>Process Identifier</Name>
-            <Description>Identifies the business process context in which the transaction appears.</Description>
-            <Value type="FIXED">...</Value>
+            <Name>Business process identifier</Name>
+            <Description>Identification of the business process to be used if the message is sent via the Peppol network.</Description>
+            <DataType>Identifier</DataType>
+            <Value type="FIXED">urn:fdc:anskaffelser.no:2019:ehf-cv:1</Value>
         </Element>
 
         <Element>
             <Term>cv-req:ID</Term>
-            <Name>CV request identifier</Name>
-            <Description>Document identifier for referencing the document instance.</Description>
-            <Value type="EXAMPLE">1</Value>
+            <Name>Document identification</Name>
+            <Description>A unique identification of the CV-request. UUID issued by the sender.</Description>
+            <DataType>Identifier</DataType>
+            <Value type="EXAMPLE">405e161f-98a0-4b06-8a24-8c290081a2ea</Value>
+        </Element>
+
+        <Element>
+            <Term>cv-req:RoleDescription</Term>
+            <Name>Role description</Name>
+            <Description>Description of role or job title that the CV is requested for.</Description>
+            <DataType>Text</DataType>
+            <Value type="EXAMPLE">Developer</Value>
         </Element>
 
         <Element>
             <Term>cv-req:IssueDate</Term>
-            <Name>Issue Date</Name>
-            <Description>The date on which the transaction instance was issued, format YYYY-MM-DD.</Description>
-            <Value type="EXAMPLE">2020-02-02</Value>
+            <Name>EHF-CV issue date</Name>
+            <Description>The date when the CV-request was issued. Format "YYYY-MM-DD"</Description>
+            <DataType>Date</DataType>
+            <Value type="EXAMPLE">2024-02-02</Value>
             <Reference type="RULE">EHF-COMMON-R031</Reference>
         </Element>
 
-        <Element>
+        <Element cardinality="0..1">
             <Term>cv-req:IssueTime</Term>
-            <Name>Issue Time</Name>
-            <Description>The time on which the transaction instance was issued.</Description>
-            <Value type="EXAMPLE">08:30:00</Value>
+            <Name>EHF-CV issue time</Name>
+            <Description>The time when the CV-request was issued. Format "HH:MM:SS"</Description>
+            <DataType>Time</DataType>
+            <Value type="EXAMPLE">10:30:00</Value>
         </Element>
 
         <Element>
-            <Term>cv-req:FolderReference</Term>
-            <Name>Folder Reference</Name>
-
-            <Element>
-                <Term>cv-req:ID</Term>
-                <Name>Doffin Reference</Name>
-                <Description>The Doffin Reference number.</Description>
-
-                <Attribute>
-                <Term>schemeID</Term>
-                <Name>Doffin Scheme identifier</Name>
-                <Value type="FIXED">DOFFIN</Value>
-                </Attribute>
-
-                <Value type="EXAMPLE">14789</Value>
-            </Element>
-        </Element>
-        
-        <Element cardinality="0..1">
             <Term>cv-req:SenderParty</Term>
-            <Name>Contracting Authority</Name>
-            
+            <Name>SENDER</Name>
+
             <Element>
-                <Term>cv-req:EndpointID</Term>
-                <Name>Electronic Address Identifier</Name>
-                <Description>The electronic address identifier of the Contracting Authority.</Description>
-                <Reference type="RULE">EHF-COMMON-R011</Reference>
-                
-                <Attribute>
-                    <Term>schemeID</Term>
-                    <Name>Scheme identifier</Name>
-                    <Reference type="CODE_LIST">eaid</Reference>
-                    <Value type="EXAMPLE">0192</Value>
-                </Attribute>
-                
-                <Value type="EXAMPLE">987654325</Value>
-            </Element>
-            
-            <Element>
-                <Term>cv-req:Name</Term>
-                <Name>Name</Name>
-                <Description>The name of the Contracting Authority.</Description>
-                <Value type="EXAMPLE">X company</Value>
-            </Element>
-            
-            <Element cardinality="0..1">
-                <Term>cv-req:Contact</Term>
-                <Name>Contact Information</Name>
-                
-                <Element>
-                    <Term>cv-req:Name</Term>
-                    <Name>Contact Name</Name>
-                    <Description>Contact person's name.</Description>
-                    <Value type="EXAMPLE">John Johnsen</Value>
-                </Element>
-                
+                <Term>cv-req:Party</Term>
+                <Name>PARTY</Name>
+
                 <Element cardinality="0..1">
-                    <Term>cv-req:Telephone</Term>
-                    <Name>Contact Telephone Number</Name>
-                    <Description>Contact person's telephone number.</Description>
-                    <Value type="EXAMPLE">99998888</Value>
+                    <Term>cv-req:EndpointID</Term>
+                    <Name>Sender electronic address</Name>
+                    <Description>Identifies the Sender's electronic address.</Description>
+                    <DataType>Identifier</DataType>
+                    <Reference type="RULE">EHF-COMMON-R011</Reference>
+
+                    <Attribute>
+                        <Term>schemeID</Term>
+                        <Name>Identifier identification scheme identifier</Name>
+                        <Reference type="CODE_LIST">eaid</Reference>
+                        <Value type="EXAMPLE">0192</Value>
+                    </Attribute>
+
+                    <Value type="EXAMPLE">987654325</Value>
                 </Element>
-                
-                <Element>
-                    <Term>cv-req:ElectronicMail</Term>
-                    <Name>Contact Email Address</Name>
-                    <Description>Contact person's e-mail address.</Description>
-                    <Value type="EXAMPLE">john.johnsen@x.com</Value>
+
+                <Element cardinality="0..1">
+                    <Term>cv-req:PartyName</Term>
+                    <Name>PARTY NAME</Name>
+
+                    <Element>
+                        <Term>cv-req:Name</Term>
+                        <Name>Party name</Name>
+                        <Description>Name of company sending the CV-request.</Description>
+                        <DataType>Text</DataType>
+                        <Value type="EXAMPLE">Digitaliseringsdirektoratet</Value>
+                    </Element>
+                </Element>
+
+                <Element cardinality="0..1">
+                    <Term>cv-req:PostalAddress</Term>
+                    <Name>SENDER POSTAL ADDRESS</Name>
+                    <Description>A group of business terms providing information about the address of the Sender.</Description>
+
+                    <Element cardinality="0..1">
+                        <Term>cv-req:Country</Term>
+                        <Name>COUNTRY</Name>
+
+                        <Element>
+                            <Term>cv-req:IdentificationCode</Term>
+                            <Name>Sender country code</Name>
+                            <Description>A code that identifies the country. Codes must be according to the ISO 3166-1 alpha-2 representation.</Description>
+                            <DataType>Code</DataType>
+                            <Reference type="CODE_LIST">ISO3166</Reference>
+                            <Value type="EXAMPLE">NO</Value>
+                        </Element>
+                    </Element>
+                </Element>
+
+                <Element cardinality="0..1">
+                    <Term>cv-req:Contact</Term>
+                    <Name>SENDER CONTACT</Name>
+
+                    <Element cardinality="0..1">
+                        <Term>cv-req:Name</Term>
+                        <Name>Sender contact person name</Name>
+                        <Description>Name of contact person</Description>
+                        <DataType>Text</DataType>
+                        <Value type="EXAMPLE">Ola Nordmann</Value>
+                    </Element>
+
+                    <Element cardinality="0..1">
+                        <Term>cv-req:Role</Term>
+                        <Name>Sender contact person role</Name>
+                        <Description>Role of contact person according to code list</Description>
+                        <DataType>Code</DataType>
+                        <Reference type="CODE_LIST">styrk98</Reference>
+                        <Value type="EXAMPLE">1210102</Value>
+                    </Element>
+
+                    <Element cardinality="0..1">
+                        <Term>cv-req:Telephone</Term>
+                        <Name>Sender contact telephone number</Name>
+                        <Description>A phone number for the contact person</Description>
+                        <DataType>Text</DataType>
+                        <Value type="EXAMPLE">22224444</Value>
+                    </Element>
+
+                    <Element cardinality="0..1">
+                        <Term>cv-req:ElectronicMail</Term>
+                        <Name>Sender contact email address</Name>
+                        <Description>An e-mail address for the contact person</Description>
+                        <DataType>Text</DataType>
+                        <Value type="EXAMPLE">ola.nordmann@digdir.no</Value>
+                    </Element>
                 </Element>
             </Element>
         </Element>
-        
-        <Element cardinality="0..1">
+
+        <Element>
             <Term>cv-req:ReceiverParty</Term>
-            <Name>Economic operator</Name>
+            <Name>RECEIVER</Name>
 
             <Element>
-                <Term>cv-req:EndpointID</Term>
-                <Name>Electronic Address Identifier</Name>
-                <Description>The electronic address identifier of the Economic Operator.</Description>
-                <Reference type="RULE">EHF-COMMON-R011</Reference>
+                <Term>cv-req:Party</Term>
+                <Name>PARTY</Name>
 
-                <Attribute>
-                    <Term>schemeID</Term>
-                    <Name>Scheme identifier</Name>
-                    <Reference type="CODE_LIST">eaid</Reference>
-                    <Value type="EXAMPLE">0192</Value>
-                </Attribute>
+                <Element cardinality="0..1">
+                    <Term>cv-req:EndpointID</Term>
+                    <Name>Receiver electronic address</Name>
+                    <Description>Identifies the Receiver's electronic address.</Description>
+                    <DataType>Identifier</DataType>
+                    <Reference type="RULE">EHF-COMMON-R011</Reference>
 
-                <Value type="EXAMPLE">987654325</Value>
-            </Element>
+                    <Attribute>
+                        <Term>schemeID</Term>
+                        <Name>Identifier identification scheme identifier</Name>
+                        <Reference type="CODE_LIST">eaid</Reference>
+                        <Value type="EXAMPLE">0192</Value>
+                    </Attribute>
 
-            <Element>
-                <Term>cv-req:Name</Term>
-                <Name>Name</Name>
-                <Description>The name of the Economic operator.</Description>
-                <Value type="EXAMPLE">Digitaliseringsdirektoratet</Value>
-            </Element>
-
-            <Element cardinality="0..1">
-                <Term>cv-req:Contact</Term>
-                <Name>Contact Information</Name>
-
-                <Element>
-                    <Term>cv-req:Name</Term>
-                    <Name>Contact Name</Name>
-                    <Description>Contact person's name.</Description>
-                    <Value type="EXAMPLE">Ola Nordmann</Value>
+                    <Value type="EXAMPLE">123456789</Value>
                 </Element>
 
                 <Element cardinality="0..1">
-                    <Term>cv-req:Telephone</Term>
-                    <Name>Contact Telephone Number</Name>
-                    <Description>Contact person's telephone number.</Description>
-                    <Value type="EXAMPLE">22224444</Value>
+                    <Term>cv-req:PartyName</Term>
+                    <Name>PARTY NAME</Name>
+
+                    <Element>
+                        <Term>cv-req:Name</Term>
+                        <Name>Party name</Name>
+                        <Description>Name of company receiving the CV-request.</Description>
+                        <DataType>Text</DataType>
+                        <Value type="EXAMPLE">Konsulentselskap</Value>
+                    </Element>
                 </Element>
 
-                <Element>
-                    <Term>cv-req:ElectronicMail</Term>
-                    <Name>Contact Email Address</Name>
-                    <Description>Contact person's e-mail address.</Description>
-                    <Value type="EXAMPLE">ola.nordmann@digdir.no</Value>
+                <Element cardinality="0..1">
+                    <Term>cv-req:PostalAddress</Term>
+                    <Name>RECEIVER POSTAL ADDRESS</Name>
+                    <Description>A group of business terms providing information about the address of the Receiver.</Description>
+
+                    <Element cardinality="0..1">
+                        <Term>cv-req:Country</Term>
+                        <Name>COUNTRY</Name>
+
+                        <Element>
+                            <Term>cv-req:IdentificationCode</Term>
+                            <Name>Receiver country code</Name>
+                            <Description>A code that identifies the country. Codes must be according to the ISO 3166-1 alpha-2 representation.</Description>
+                            <DataType>Code</DataType>
+                            <Reference type="CODE_LIST">ISO3166</Reference>
+                            <Value type="EXAMPLE">NO</Value>
+                        </Element>
+                    </Element>
+                </Element>
+
+                <Element cardinality="0..1">
+                    <Term>cv-req:Contact</Term>
+                    <Name>RECEIVER CONTACT</Name>
+
+                    <Element cardinality="0..1">
+                        <Term>cv-req:Name</Term>
+                        <Name>Receiver contact person name</Name>
+                        <Description>Name of contact person</Description>
+                        <DataType>Text</DataType>
+                        <Value type="EXAMPLE">Jon Jonsen</Value>
+                    </Element>
+
+                    <Element cardinality="0..1">
+                        <Term>cv-req:Role</Term>
+                        <Name>Receiver contact person role</Name>
+                        <Description>Role of contact person according to code list</Description>
+                        <DataType>Code</DataType>
+                        <Reference type="CODE_LIST">styrk98</Reference>
+                        <Value type="EXAMPLE">1210102</Value>
+                    </Element>
+
+                    <Element cardinality="0..1">
+                        <Term>cv-req:Telephone</Term>
+                        <Name>Receiver contact telephone number</Name>
+                        <Description>A phone number for the contact person</Description>
+                        <DataType>Text</DataType>
+                        <Value type="EXAMPLE">99998888</Value>
+                    </Element>
+
+                    <Element cardinality="0..1">
+                        <Term>cv-req:ElectronicMail</Term>
+                        <Name>Receiver contact email address</Name>
+                        <Description>An e-mail address for the contact person</Description>
+                        <DataType>Text</DataType>
+                        <Value type="EXAMPLE">jon.jonsen@selskap.no</Value>
+                    </Element>
                 </Element>
             </Element>
         </Element>
-        
+
         <Element cardinality="0..1">
             <Term>cv-req:PoliceCertificate</Term>
-            <Name>PoliceCertificate requirement</Name>
+            <Name>Police certificate</Name>
 
             <Element>
                 <Term>cv-req:ID</Term>
-                <Name>Police certificate identifier</Name>
-                <Description>Each line must have an identifier that is unique within the document to make it possible to
-                  positively reference the line. For example, from other documents.</Description>
+                <Name>Identification</Name>
+                <Description>ID for Police certificate</Description>
+                <DataType>Identifier</DataType>
                 <Value type="EXAMPLE">1</Value>
             </Element>
 
-            <Element>
+            <Element cardinality="0..1">
                 <Term>cv-req:Requirement</Term>
-                <Name>Police certificate requirement</Name>
-                <Description>Requirement related to the Police certificate</Description>
+                <Name>Requirement</Name>
+                <Description>Legal values: must or should</Description>
+                <DataType>Code</DataType>
                 <Reference type="CODE_LIST">requirement</Reference>
                 <Value type="EXAMPLE">must</Value>
             </Element>
 
-            <Element>
+            <Element cardinality="0..1">
                 <Term>cv-req:Type</Term>
-                <Name>Police certificate type</Name>
-                <Description>The type of the certificate.</Description>
+                <Name>Type</Name>
+                <Description>Type of Police certificate</Description>
+                <DataType>Code</DataType>
                 <Reference type="CODE_LIST">police-certificate</Reference>
-                <Value type="High School">Begrenset</Value>
+                <Value type="EXAMPLE">Begrenset</Value>
             </Element>
 
             <Element cardinality="0..1">
                 <Term>cv-req:ValidTo</Term>
                 <Name>Valid to date</Name>
-                <Description>A date to which the certificate must be valid</Description>
+                <Description>The date when the Police certificate is valid to. Format "YYYY-MM-DD"</Description>
+                <DataType>Date</DataType>
                 <Value type="EXAMPLE">2024-12-31</Value>
+                <Reference type="RULE">EHF-COMMON-R031</Reference>
             </Element>
         </Element>
 
         <Element cardinality="0..n">
             <Term>cv-req:Education</Term>
-            <Name>Education requirement</Name>
+            <Name>Education</Name>
 
             <Element>
                 <Term>cv-req:ID</Term>
-                <Name>Education identifier</Name>
-                <Description>Each line must have an identifier that is unique within the document to make it possible to
-                  positively reference the line. For example, from other documents.</Description>
+                <Name>Identification</Name>
+                <Description>ID for Education</Description>
+                <DataType>Identifier</DataType>
                 <Value type="EXAMPLE">1</Value>
             </Element>
 
             <Element cardinality="0..1">
                 <Term>cv-req:Requirement</Term>
-                <Name>Education requirement</Name>
-                <Description>Requirement related to the specific education</Description>
+                <Name>Requirement</Name>
+                <Description>Legal values: must or should</Description>
+                <DataType>Code</DataType>
                 <Reference type="CODE_LIST">requirement</Reference>
-                <Value type="EXAMPLE">must</Value>
+                <Value type="EXAMPLE">should</Value>
             </Element>
 
-            <Element>
+            <Element cardinality="0..1">
                 <Term>cv-req:Title</Term>
-                <Name>Education title</Name>
-                <Description>The name of the education.</Description>
-                <Value type="High School">HMS</Value>
-                <Reference type="RULE">EHF-CV-REQ-R001</Reference>
+                <Name>Title</Name>
+                <Description>Education title</Description>
+                <DataType>Text</DataType>
+                <Value type="EXAMPLE">Master</Value>
             </Element>
 
             <Element cardinality="0..1">
                 <Term>cv-req:EducationDegree</Term>
                 <Name>Education degree</Name>
-                <Description>A specific requirement of education degree. Use codelist educationDegree.</Description>
+                <Description>Education degree according to code list</Description>
+                <DataType>Code</DataType>
                 <Reference type="CODE_LIST">EducationDegree</Reference>
-                <Value type="EXAMPLE">master</Value>
+                <Value type="EXAMPLE">7</Value>
             </Element>
 
             <Element cardinality="0..1">
-                <Term>cv-req:SubjectArea</Term>
-                <Name>Educational Subject Area</Name>
-                <Description>A specific requirement of educational subject area. Use codelist subArea.</Description>
-                <Reference type="CODE_LIST">NUS</Reference>
-                <Value type="EXAMPLE">269999</Value>
-            </Element>
-
-            <Element cardinality="0..1">
-                <Term>cv-req:RegistrationType</Term>
-                <Name>Registration type</Name>
-                <Description>A specific requirement of registration type, e.g. HPR-number.</Description>
-                <Value type="EXAMPLE">HPR</Value>
-            </Element>
-
-            <Element cardinality="0..n">
                 <Term>cv-req:RelevantExperience</Term>
-                <Name>Relavant experience</Name>
-                <Description>If formel education is not necessary and accept relevant experiences.</Description>
+                <Name>RELEVANT EXPERIENCE</Name>
+                <Description>Relevant experience as alternative to education</Description>
 
                 <Element>
                     <Term>cv-req:Type</Term>
-                    <Name>Type Experience</Name>
-                    <Description>A specific requirement about a type of experience. Expressed by using classification of occupations code.</Description>
+                    <Name>Type</Name>
+                    <Description>Type of experience according to code list</Description>
+                    <DataType>Code</DataType>
                     <Reference type="CODE_LIST">styrk98</Reference>
-                    <Value type="EXAMPLE">0113126</Value>
+                    <Value type="EXAMPLE">3120127</Value>
                 </Element>
 
-                <Element>
+                <Element cardinality="0..1">
                     <Term>cv-req:MinYear</Term>
-                    <Name>Minimum year</Name>
-                    <Description>A specific requirement about minimum year of experience.</Description>
-                    <Value type="EXAMPLE">2</Value>
+                    <Name>Minimum years</Name>
+                    <Description>Minimum years of experience</Description>
+                    <DataType>Numeric</DataType>
+                    <Value type="EXAMPLE">5</Value>
                 </Element>
             </Element>
 
             <Element cardinality="0..n">
                 <Term>cv-req:AlternativeEducation</Term>
-                <Name>Alternative education requirement</Name>
-                <Description>If alternative education requirement is accepted.</Description>
+                <Name>Alternative education</Name>
+                <Description>Education as alternative to main requirement</Description>
 
                 <Element>
                     <Term>cv-req:ID</Term>
-                    <Name>Alternative education identifier</Name>
-                    <Description>Each line must have an identifier that is unique within the document to make it possible to positively reference the line.
-                        For example, from other documents.</Description>
+                    <Name>Identification</Name>
+                    <Description>ID for Education</Description>
+                    <DataType>Identifier</DataType>
                     <Value type="EXAMPLE">1</Value>
                 </Element>
 
                 <Element cardinality="0..1">
                     <Term>cv-req:Requirement</Term>
-                    <Name>Education requirement</Name>
-                    <Description>Requirement related to the specific education</Description>
+                    <Name>Requirement</Name>
+                    <Description>Legal values: must or should</Description>
+                    <DataType>Code</DataType>
                     <Reference type="CODE_LIST">requirement</Reference>
-                    <Value type="EXAMPLE">should</Value>
-                </Element>
-
-                <Element>
-                    <Term>cv-req:EducationDegree</Term>
-                    <Name>Education degree</Name>
-                    <Description>A specific requirement of education degree. Use codelist educationDegree.</Description>
-                    <Reference type="CODE_LIST">EducationDegree</Reference>
-                    <Value type="EXAMPLE">master</Value>
-                </Element>
-
-                <Element>
-                    <Term>cv-req:SubjectArea</Term>
-                    <Name>Educational Subject Area</Name>
-                    <Description>A specific requirement of educational subject area. Use codelist subArea.</Description>
-                    <Reference type="CODE_LIST">NUS</Reference>
-                    <Value type="EXAMPLE">311499</Value>
+                    <Value type="EXAMPLE">must</Value>
                 </Element>
 
                 <Element cardinality="0..1">
-                    <Term>cv-req:RegistrationType</Term>
-                    <Name>Registration type</Name>
-                    <Description>A specific requirement of registration type, e.g. HPR-number.</Description>
-                    <Value type="EXAMPLE">HMS</Value>
+                    <Term>cv-req:Title</Term>
+                    <Name>Title</Name>
+                    <Description>Education title</Description>
+                    <DataType>Text</DataType>
+                    <Value type="EXAMPLE">Bachelor</Value>
                 </Element>
 
-                <Element cardinality="0..n">
-                    <Term>cv-req:RelevantExperience</Term>
-                    <Name>Relevant experience</Name>
-                    <Description>If formal education is not necessary and accept relevant experiences.</Description>
-
-                    <Element>
-                        <Term>cv-req:Type</Term>
-                        <Name>Experience Type</Name>
-                        <Description>A specific requirement about a type of experience. Expressed by using classification of occupations code.</Description>
-                        <Reference type="CODE_LIST">styrk98</Reference>
-                        <Value type="EXAMPLE">1110101</Value>
-                    </Element>
-
-                    <Element>
-                        <Term>cv-req:MinYear</Term>
-                        <Name>Minimum year</Name>
-                        <Description>A requirement about minimum year of experience.</Description>
-                        <Value type="EXAMPLE">5</Value>
-                    </Element>
+                <Element cardinality="0..1">
+                    <Term>cv-req:EducationDegree</Term>
+                    <Name>Education degree</Name>
+                    <Description>Education degree according to code list</Description>
+                    <DataType>Code</DataType>
+                    <Reference type="CODE_LIST">EducationDegree</Reference>
+                    <Value type="EXAMPLE">6</Value>
                 </Element>
             </Element>
         </Element>
 
         <Element cardinality="0..n">
             <Term>cv-req:Course</Term>
-            <Name>Course requirements</Name>
-            <Description>Course related requirements.</Description>
+            <Name>Course</Name>
+            <Description>A group of business terms providing information about Course</Description>
 
             <Element>
                 <Term>cv-req:ID</Term>
-                <Name>Course identifier</Name>
-                <Description>Each line must have an identifier that is unique within the document to make it possible to positively reference the line.
-                    For example, from other documents.</Description>
+                <Name>Identification</Name>
+                <Description>ID for Course</Description>
+                <DataType>Identifier</DataType>
                 <Value type="EXAMPLE">1</Value>
             </Element>
 
             <Element cardinality="0..1">
                 <Term>cv-req:Requirement</Term>
-                <Name>Course requirement</Name>
-                <Description>Requirement related to the specific course.</Description>
+                <Name>Requirement</Name>
+                <Description>Legal values: must or should</Description>
+                <DataType>Code</DataType>
                 <Reference type="CODE_LIST">requirement</Reference>
-                <Value type="EXAMPLE">must</Value>
+                <Value type="EXAMPLE">should</Value>
             </Element>
 
-            <Element>
+            <Element cardinality="0..1">
                 <Term>cv-req:Title</Term>
-                <Name>Course title</Name>
-                <Description>The specific name of the course.</Description>
-                <Value type="EXAMPLE">HMS</Value>
-                <Reference type="RULE">EHF-CV-REQ-R001</Reference>
+                <Name>Title</Name>
+                <Description>Course title</Description>
+                <DataType>Text</DataType>
+                <Value type="EXAMPLE">python</Value>
             </Element>
 
             <Element cardinality="0..1">
-                <Term>cv-req:Type</Term>
-                <Name>Course type</Name>
-                <Description>The specific name of the course expressed as code.</Description>
-                <Reference type="CODE_LIST">CourseType</Reference>
-                <Value type="EXAMPLE">Dykkerkurs</Value>
-                <Reference type="RULE">EHF-CV-REQ-R001</Reference>
-            </Element>
-
-            <Element cardinality="0..1">
-                <Term>cv-req:Version</Term>
-                <Name>Course version</Name>
-                <Description>The version of the course.</Description>
-                <Value type="EXAMPLE">1.0</Value>
+                <Term>cv-req:VersionID</Term>
+                <Name>Version</Name>
+                <Description>Version of course</Description>
+                <DataType>Identifier</DataType>
+                <Value type="EXAMPLE">3.0</Value>
             </Element>
 
             <Element cardinality="0..1">
                 <Term>cv-req:Period</Term>
-                <Name>Period</Name>
-                <Description>The period the course has been completed.</Description>
+                <Name>PERIOD</Name>
+                <Description>Period for the course</Description>
 
                 <Element cardinality="0..1">
                     <Term>cv-req:StartDate</Term>
                     <Name>Start date</Name>
-                    <Description>Course start date.</Description>
-                    <Value type="EXAMPLE">2020-01-10</Value>
+                    <Description>The start of the Course period. Format "YYYY-MM-DD"</Description>
+                    <DataType>Date</DataType>
+                    <Value type="EXAMPLE">2023-01-10</Value>
                     <Reference type="RULE">EHF-CV-REQ-R002</Reference>
                     <Reference type="RULE">EHF-COMMON-R031</Reference>
                 </Element>
@@ -412,8 +455,9 @@
                 <Element cardinality="0..1">
                     <Term>cv-req:EndDate</Term>
                     <Name>End date</Name>
-                    <Description>Course end date. This may be a date in future.</Description>
-                    <Value type="EXAMPLE">2020-05-05</Value>
+                    <Description>The end of the Course period. Format "YYYY-MM-DD"</Description>
+                    <DataType>Date</DataType>
+                    <Value type="EXAMPLE">2024-05-05</Value>
                     <Reference type="RULE">EHF-CV-REQ-R002</Reference>
                     <Reference type="RULE">EHF-COMMON-R031</Reference>
                 </Element>
@@ -421,68 +465,63 @@
 
             <Element cardinality="0..n">
                 <Term>cv-req:AlternativeCourse</Term>
-                <Name>Alternative course requirements</Name>
-                <Description>If alternative course requirement is accepted.</Description>
+                <Name>Alternative course</Name>
+                <Description>Alternative to main requirement</Description>
 
                 <Element>
                     <Term>cv-req:ID</Term>
-                    <Name>Alternative course identifier</Name>
-                    <Description>Each line must have an identifier that is unique within the document to make it possible to positively reference the line.
-                        For example, from other documents.</Description>
+                    <Name>Identification</Name>
+                    <Description>ID for Course</Description>
+                    <DataType>Identifier</DataType>
                     <Value type="EXAMPLE">1</Value>
                 </Element>
 
                 <Element cardinality="0..1">
                     <Term>cv-req:Requirement</Term>
-                    <Name>Course requirement</Name>
-                    <Description>Requirement related to the specific course.</Description>
+                    <Name>Requirement</Name>
+                    <Description>Legal values: must or should</Description>
+                    <DataType>Code</DataType>
                     <Reference type="CODE_LIST">requirement</Reference>
                     <Value type="EXAMPLE">should</Value>
                 </Element>
 
-                <Element>
+                <Element cardinality="0..1">
                     <Term>cv-req:Title</Term>
-                    <Name>Course title</Name>
-                    <Description>The specific name of the course.</Description>
-                    <Value type="EXAMPLE">HMS</Value>
-                    <Reference type="RULE">EHF-CV-REQ-R001</Reference>
+                    <Name>Title</Name>
+                    <Description>Course title</Description>
+                    <DataType>Text</DataType>
+                    <Value type="EXAMPLE">python</Value>
                 </Element>
 
                 <Element cardinality="0..1">
-                    <Term>cv-req:Type</Term>
-                    <Name>Course type</Name>
-                    <Description>The specific name of the course expressed as code.</Description>
-                    <Reference type="CODE_LIST">CourseType</Reference>
-                    <Value type="EXAMPLE">IndianCooking</Value>
-                    <Reference type="RULE">EHF-CV-REQ-R001</Reference>
-                </Element>
-
-                <Element cardinality="0..1">
-                    <Term>cv-req:Version</Term>
-                    <Name>Course version</Name>
-                    <Description>The version of the course.</Description>
-                    <Value type="EXAMPLE">1.0</Value>
+                    <Term>cv-req:VersionID</Term>
+                    <Name>Version</Name>
+                    <Description>Version of course</Description>
+                    <DataType>Identifier</DataType>
+                    <Value type="EXAMPLE">2.0</Value>
                 </Element>
 
                 <Element cardinality="0..1">
                     <Term>cv-req:Period</Term>
-                    <Name>Period</Name>
-                    <Description>The period the course has been completed.</Description>
+                    <Name>PERIOD</Name>
+                    <Description>Period for the course</Description>
 
                     <Element cardinality="0..1">
                         <Term>cv-req:StartDate</Term>
-                        <Name>Period start date</Name>
-                        <Description>Course start date.</Description>
-                        <Value type="EXAMPLE">2020-01-10</Value>
+                        <Name>Start date</Name>
+                        <Description>The start of the Course period. Format "YYYY-MM-DD"</Description>
+                        <DataType>Date</DataType>
+                        <Value type="EXAMPLE">2023-01-10</Value>
                         <Reference type="RULE">EHF-CV-REQ-R002</Reference>
                         <Reference type="RULE">EHF-COMMON-R031</Reference>
                     </Element>
 
                     <Element cardinality="0..1">
                         <Term>cv-req:EndDate</Term>
-                        <Name>Period end date</Name>
-                        <Description>Course end date. This may be a date in future.</Description>
-                        <Value type="EXAMPLE">2020-05-05</Value>
+                        <Name>End date</Name>
+                        <Description>The end of the Course period. Format "YYYY-MM-DD"</Description>
+                        <DataType>Date</DataType>
+                        <Value type="EXAMPLE">2024-05-05</Value>
                         <Reference type="RULE">EHF-CV-REQ-R002</Reference>
                         <Reference type="RULE">EHF-COMMON-R031</Reference>
                     </Element>
@@ -492,107 +531,95 @@
 
         <Element cardinality="0..n">
             <Term>cv-req:Certification</Term>
-            <Name>Crtification requirements</Name>
-            <Description>Certification related requirements.</Description>
+            <Name>Certification</Name>
+            <Description>A group of business terms providing information about Certification</Description>
 
             <Element>
                 <Term>cv-req:ID</Term>
-                <Name>Certification Identifier</Name>
-                <Description>Each line must have an identifier that is unique within the document to make it possible to positively reference the line.
-                    For example, from other documents.</Description>
+                <Name>Identification</Name>
+                <Description>ID for Certification</Description>
+                <DataType>Identifier</DataType>
                 <Value type="EXAMPLE">1</Value>
             </Element>
 
             <Element cardinality="0..1">
                 <Term>cv-req:Requirement</Term>
-                <Name>Certification Requirement</Name>
-                <Description>Requirement related to the specific course.</Description>
+                <Name>Requirement</Name>
+                <Description>Legal values: must or should</Description>
+                <DataType>Code</DataType>
                 <Reference type="CODE_LIST">requirement</Reference>
-                <Value type="EXAMPLE">must</Value>
+                <Value type="EXAMPLE">should</Value>
             </Element>
 
-            <Element>
+            <Element cardinality="0..1">
                 <Term>cv-req:Title</Term>
-                <Name>Certification title</Name>
-                <Description>The specific name of the certification.</Description>
-                <Value type="EXAMPLE">HMS</Value>
-                <Reference type="RULE">EHF-CV-REQ-R003</Reference>
-            </Element>
-
-            <Element cardinality="0..1">
-                <Term>cv-req:Type</Term>
-                <Name>Certification type</Name>
-                <Description>The specific name of the certification expressed as code.</Description>
-                <Reference type="CODE_LIST">CertificationType</Reference>
+                <Name>Title</Name>
+                <Description>Certification title</Description>
+                <DataType>Text</DataType>
                 <Value type="EXAMPLE">archimate</Value>
-                <Reference type="RULE">EHF-CV-REQ-R003</Reference>
             </Element>
 
             <Element cardinality="0..1">
-                <Term>cv-req:Version</Term>
-                <Name>Cerrtification version</Name>
-                <Description>The version of the certfication.</Description>
+                <Term>cv-req:VersionID</Term>
+                <Name>Version</Name>
+                <Description>Version of certification</Description>
+                <DataType>Identifier</DataType>
                 <Value type="EXAMPLE">3.0</Value>
             </Element>
 
             <Element cardinality="0..1">
                 <Term>cv-req:ValidTo</Term>
-                <Name>Cerrtification valid date</Name>
-                <Description>The certification need to be valid to a spesific date.</Description>
-                <Value type="EXAMPLE">2020-12-01</Value>
+                <Name>Valid to</Name>
+                <Description>Valid to date. Format "YYYY-MM-DD"</Description>
+                <DataType>Date</DataType>
+                <Value type="EXAMPLE">2030-12-31</Value>
                 <Reference type="RULE">EHF-COMMON-R031</Reference>
             </Element>
 
-            <Element cardinality="0..n">
+            <Element cardinality="0..1">
                 <Term>cv-req:AlternativeCertification</Term>
-                <Name>Alternative certification requirements</Name>
-                <Description>If alternative certification requirement is accepted.</Description>
+                <Name>Alternative certification</Name>
+                <Description>Alternative to main requirement</Description>
 
                 <Element>
                     <Term>cv-req:ID</Term>
-                    <Name>Certification Identifier</Name>
-                    <Description>Each line must have an identifier that is unique within the document to make it possible to positively reference the line.
-                        For example, from other documents.</Description>
+                    <Name>Identification</Name>
+                    <Description>ID for Certification</Description>
+                    <DataType>Identifier</DataType>
                     <Value type="EXAMPLE">1</Value>
                 </Element>
 
                 <Element cardinality="0..1">
                     <Term>cv-req:Requirement</Term>
-                    <Name>Certification Requirement</Name>
-                    <Description>Requirement related to the specific course.</Description>
+                    <Name>Requirement</Name>
+                    <Description>Legal values: must or should</Description>
+                    <DataType>Code</DataType>
                     <Reference type="CODE_LIST">requirement</Reference>
-                    <Value type="EXAMPLE">desirable</Value>
+                    <Value type="EXAMPLE">must</Value>
                 </Element>
 
-                <Element>
+                <Element cardinality="0..1">
                     <Term>cv-req:Title</Term>
-                    <Name>Certification title</Name>
-                    <Description>The specific name of the certification.</Description>
-                    <Value type="EXAMPLE">HMS</Value>
-                    <Reference type="RULE">EHF-CV-REQ-R003</Reference>
+                    <Name>Title</Name>
+                    <Description>Certification title</Description>
+                    <DataType>Text</DataType>
+                    <Value type="EXAMPLE">archimate</Value>
                 </Element>
 
                 <Element cardinality="0..1">
-                    <Term>cv-req:Type</Term>
-                    <Name>Certification type</Name>
-                    <Description>The specific name of the certification expressed as code.</Description>
-                    <Reference type="CODE_LIST">CertificationType</Reference>
-                    <Value type="EXAMPLE">TOGAF</Value>
-                    <Reference type="RULE">EHF-CV-REQ-R003</Reference>
-                </Element>
-
-                <Element cardinality="0..1">
-                    <Term>cv-req:Version</Term>
-                    <Name>Certification version</Name>
-                    <Description>The version of the certfication.</Description>
+                    <Term>cv-req:VersionID</Term>
+                    <Name>Version</Name>
+                    <Description>Version of certification</Description>
+                    <DataType>Identifier</DataType>
                     <Value type="EXAMPLE">2.0</Value>
                 </Element>
 
                 <Element cardinality="0..1">
                     <Term>cv-req:ValidTo</Term>
-                    <Name>Cerrtification valid date</Name>
-                    <Description>The certification need to be valid to a spesific date.</Description>
-                    <Value type="EXAMPLE">2025-05-01</Value>
+                    <Name>Valid to</Name>
+                    <Description>Valid to date. Format "YYYY-MM-DD"</Description>
+                    <DataType>Date</DataType>
+                    <Value type="EXAMPLE">2030-12-31</Value>
                     <Reference type="RULE">EHF-COMMON-R031</Reference>
                 </Element>
             </Element>
@@ -600,137 +627,156 @@
 
         <Element cardinality="0..n">
             <Term>cv-req:LanguageSkills</Term>
-            <Name>Language requirements</Name>
-            <Description>Language related requirements.</Description>
+            <Name>Language skills</Name>
+            <Description>A group of business terms providing information about Language skills</Description>
 
             <Element>
                 <Term>cv-req:ID</Term>
-                <Name>Language Identifier</Name>
-                <Description>Each line must have an identifier that is unique within the document to make it possible to positively reference the line.
-                    For example, from other documents.</Description>
+                <Name>Identification</Name>
+                <Description>ID for Language skills</Description>
+                <DataType>Identifier</DataType>
                 <Value type="EXAMPLE">1</Value>
             </Element>
 
             <Element cardinality="0..1">
                 <Term>cv-req:Requirement</Term>
-                <Name>Language Requirement</Name>
-                <Description>Requirement related to the specific course.</Description>
+                <Name>Requirement</Name>
+                <Description>Legal values: must or should</Description>
+                <DataType>Code</DataType>
                 <Reference type="CODE_LIST">requirement</Reference>
-                <Value type="EXAMPLE">must</Value>
+                <Value type="EXAMPLE">should</Value>
             </Element>
 
-            <Element>
+            <Element cardinality="0..1">
                 <Term>cv-req:Language</Term>
                 <Name>Language</Name>
-                <Description>The specific language. Use code list ISO639.</Description>
+                <Description>Language according to code list</Description>
+                <DataType>Code</DataType>
                 <Reference type="CODE_LIST">ISO639</Reference>
                 <Value type="EXAMPLE">no</Value>
             </Element>
 
-            <Element>
+            <Element cardinality="0..1">
                 <Term>cv-req:Scandinavian</Term>
                 <Name>Scandinavian</Name>
-                <Description>Set to true if language is no, sv or dk (scandinavian language)</Description>
+                <Description>Scandinavian. true or false</Description>
+                <DataType>Indicator</DataType>
                 <Value type="EXAMPLE">true</Value>
             </Element>
 
-            <Element>
+            <Element cardinality="0..1">
                 <Term>cv-req:OralSkill</Term>
-                <Name>Language</Name>
-                <Description>Minimum requirement about the oral skill related to the specific language. Use EU Global Scale code list.</Description>
+                <Name>Oral skill</Name>
+                <Description>Level of oral skill according to code list</Description>
+                <DataType>Code</DataType>
                 <Reference type="CODE_LIST">LanguageLevel</Reference>
-                <Value type="EXAMPLE">A1</Value>
+                <Value type="EXAMPLE">C1</Value>
             </Element>
 
-            <Element>
+            <Element cardinality="0..1">
                 <Term>cv-req:WrittenSkill</Term>
-                <Name>Language</Name>
-                <Description>Minimum requirement about the written skill related to the specific language. Use EU Global Scale code list.</Description>
+                <Name>Written skill</Name>
+                <Description>Level of written skill according to code list</Description>
+                <DataType>Code</DataType>
                 <Reference type="CODE_LIST">LanguageLevel</Reference>
-                <Value type="EXAMPLE">A1</Value>
+                <Value type="EXAMPLE">C1</Value>
             </Element>
-
 
             <Element cardinality="0..n">
-                <Term>cv-req:AlternativeLanguageSkills</Term>
-                <Name>Alternative language skills requirements</Name>
-                <Description>If alternative language skills requirement is accepted.</Description>
+                <Term>cv-req:AlternativeLanguageSkill</Term>
+                <Name>Alternative language skill</Name>
+                <Description>Alternative to main requirement</Description>
 
                 <Element>
                     <Term>cv-req:ID</Term>
-                    <Name>Language Identifier</Name>
-                    <Description>Each line must have an identifier that is unique within the document to make it possible to positively reference the line.
-                        For example, from other documents.</Description>
+                    <Name>Identification</Name>
+                    <Description>ID for Language skills</Description>
+                    <DataType>Identifier</DataType>
                     <Value type="EXAMPLE">1</Value>
                 </Element>
 
                 <Element cardinality="0..1">
                     <Term>cv-req:Requirement</Term>
-                    <Name>Language Requirement</Name>
-                    <Description>Requirement related to the specific course.</Description>
+                    <Name>Requirement</Name>
+                    <Description>Legal values: must or should</Description>
+                    <DataType>Code</DataType>
                     <Reference type="CODE_LIST">requirement</Reference>
-                    <Value type="EXAMPLE">advantage</Value>
+                    <Value type="EXAMPLE">must</Value>
                 </Element>
 
-                <Element>
+                <Element cardinality="0..1">
                     <Term>cv-req:Language</Term>
                     <Name>Language</Name>
-                    <Description>The specific language. Use code list ISO639.</Description>
+                    <Description>Language according to code list</Description>
+                    <DataType>Code</DataType>
                     <Reference type="CODE_LIST">ISO639</Reference>
-                    <Value type="EXAMPLE">zu</Value>
+                    <Value type="EXAMPLE">no</Value>
                 </Element>
 
-                <Element>
+                <Element cardinality="0..1">
+                    <Term>cv-req:Scandinavian</Term>
+                    <Name>Scandinavian</Name>
+                    <Description>Scandinavian. true or false</Description>
+                    <DataType>Indicator</DataType>
+                    <Value type="EXAMPLE">true</Value>
+                </Element>
+
+                <Element cardinality="0..1">
                     <Term>cv-req:OralSkill</Term>
-                    <Name>Language</Name>
-                    <Description>Minimum requirement about the oral skill related to the specific language. Use EU Global Scale code list.</Description>
+                    <Name>Oral skill</Name>
+                    <Description>Level of oral skill according to code list</Description>
+                    <DataType>Code</DataType>
                     <Reference type="CODE_LIST">LanguageLevel</Reference>
-                    <Value type="EXAMPLE">A1</Value>
+                    <Value type="EXAMPLE">B1</Value>
                 </Element>
 
-                <Element>
+                <Element cardinality="0..1">
                     <Term>cv-req:WrittenSkill</Term>
-                    <Name>Language</Name>
-                    <Description>Minimum requirement about the written skill related to the specific language. Use EU Global Scale code list.</Description>
+                    <Name>Written skill</Name>
+                    <Description>Level of written skill according to code list</Description>
+                    <DataType>Code</DataType>
                     <Reference type="CODE_LIST">LanguageLevel</Reference>
-                    <Value type="EXAMPLE">A1</Value>
+                    <Value type="EXAMPLE">B1</Value>
                 </Element>
             </Element>
         </Element>
 
         <Element cardinality="0..n">
             <Term>cv-req:ProjectExperience</Term>
-            <Name>Project experience requirements</Name>
-            <Description>Project experience related requirements.</Description>
+            <Name>Project experience</Name>
+            <Description>A group of business terms providing information about project experience</Description>
 
             <Element>
                 <Term>cv-req:ID</Term>
-                <Name>Project experience Identifier</Name>
-                <Description>Each line must have an identifier that is unique within the document to make it possible to positively reference the line.
-                    For example, from other documents.</Description>
+                <Name>Identification</Name>
+                <Description>ID for project experience</Description>
+                <DataType>Identifier</DataType>
                 <Value type="EXAMPLE">1</Value>
             </Element>
 
             <Element cardinality="0..1">
                 <Term>cv-req:Requirement</Term>
-                <Name>Project experience Requirement</Name>
-                <Description>Requirement related to the specific project experience.</Description>
+                <Name>Requirement</Name>
+                <Description>Legal values: must or should</Description>
+                <DataType>Code</DataType>
                 <Reference type="CODE_LIST">requirement</Reference>
-                <Value type="EXAMPLE">must</Value>
+                <Value type="EXAMPLE">should</Value>
             </Element>
 
-            <Element>
+            <Element cardinality="0..1">
                 <Term>cv-req:ExperienceType</Term>
                 <Name>Experience type</Name>
-                <Description>A specific requirement about a type of experience. Expressed by using classification of occupations code.</Description>
+                <Description>Type of project experience according to code list</Description>
+                <DataType>Code</DataType>
                 <Reference type="CODE_LIST">styrk98</Reference>
-                <Value type="EXAMPLE">1141101</Value>
+                <Value type="EXAMPLE">2130111</Value>
             </Element>
 
             <Element cardinality="0..1">
                 <Term>cv-req:IndustryType</Term>
                 <Name>Industry type</Name>
-                <Description>A requirement about a industry related to project experience. Use code list NACE.</Description>
+                <Description>Type of industry according to code list</Description>
+                <DataType>Code</DataType>
                 <Reference type="CODE_LIST">NACE</Reference>
                 <Value type="EXAMPLE">01110</Value>
             </Element>
@@ -738,108 +784,118 @@
             <Element cardinality="0..1">
                 <Term>cv-req:Workplace</Term>
                 <Name>Work place</Name>
-                <Description>A project experience related to a work place, country. Use code list ISO3166.</Description>
+                <Description>Country code according to code list</Description>
+                <DataType>Code</DataType>
                 <Reference type="CODE_LIST">ISO3166</Reference>
-                <Value type="EXAMPLE">AI</Value>
+                <Value type="EXAMPLE">FR</Value>
             </Element>
 
             <Element cardinality="0..1">
                 <Term>cv-req:JobSector</Term>
                 <Name>Job sector</Name>
-                <Description>A project experience related to a job sector. Use code list sector.</Description>
+                <Description>Private, public or other according to code list</Description>
+                <DataType>Code</DataType>
                 <Reference type="CODE_LIST">sector</Reference>
                 <Value type="EXAMPLE">private</Value>
             </Element>
 
             <Element cardinality="0..1">
                 <Term>cv-req:RequiredTotalExperience</Term>
-                <Name>Required total experience</Name>
-                <Description>A requirement about total exeperience. Need to provide a amount of either minimum or maximum experience.</Description>
+                <Name>REQUIRED TOTAL EXPERIENCE</Name>
+                <Description>Required total project experience</Description>
 
-                <Element>
+                <Element cardinality="0..1">
                     <Term>cv-req:MinimumYearsExperience</Term>
                     <Name>Minimum years experience</Name>
-                    <Description>A specific requirement about minimum year of experience.</Description>
+                    <Description>Minimum years of experience</Description>
+                    <DataType>Numeric</DataType>
                     <Value type="EXAMPLE">2</Value>
                     <Reference type="RULE">EHF-CV-REQ-R004</Reference>
                 </Element>
 
-                <Element>
+                <Element cardinality="0..1">
                     <Term>cv-req:MaximumYearsExperience</Term>
                     <Name>Maximum years experience</Name>
-                    <Description>A specific requirement about maximum year of experience.</Description>
-                    <Value type="EXAMPLE">10</Value>
+                    <Description>Maximum years of experience</Description>
+                    <DataType>Numeric</DataType>
+                    <Value type="EXAMPLE">6</Value>
                     <Reference type="RULE">EHF-CV-REQ-R004</Reference>
                 </Element>
             </Element>
 
             <Element cardinality="0..1">
                 <Term>cv-req:Period</Term>
-                <Name>Period</Name>
-                <Description>The period the project experience need to been completed.</Description>
+                <Name>PERIOD</Name>
+                <Description>Period for the project experience</Description>
 
-                <Element>
+                <Element cardinality="0..1">
                     <Term>cv-req:StartDate</Term>
                     <Name>Start date</Name>
-                    <Description>Project experience start date.</Description>
-                    <Value type="EXAMPLE">2020-01-19</Value>
+                    <Description>The start of the ProjectExperience period. Format "YYYY-MM-DD"</Description>
+                    <DataType>Date</DataType>
+                    <Value type="EXAMPLE">2023-01-10</Value>
                     <Reference type="RULE">EHF-CV-REQ-R002</Reference>
                     <Reference type="RULE">EHF-COMMON-R031</Reference>
                 </Element>
 
-                <Element>
+                <Element cardinality="0..1">
                     <Term>cv-req:EndDate</Term>
                     <Name>End date</Name>
-                    <Description>Project experience end date.</Description>
-                    <Value type="EXAMPLE">2020-10-02</Value>
+                    <Description>The end of the ProjectExperience period. Format "YYYY-MM-DD"</Description>
+                    <DataType>Date</DataType>
+                    <Value type="EXAMPLE">2024-12-31</Value>
                     <Reference type="RULE">EHF-CV-REQ-R002</Reference>
                     <Reference type="RULE">EHF-COMMON-R031</Reference>
                 </Element>
             </Element>
 
-            <Element>
+            <Element cardinality="0..1">
                 <Term>cv-req:ExperienceDescription</Term>
-                <Name>Project experience description</Name>
-                <Description>Detailed description about the requirement of project experion</Description>
+                <Name>EXPERIENCE DESCRIPTION</Name>
+                <Description>Description of the project experience</Description>
 
-                <Element cardinality="0..1">
+                <Element>
                     <Term>cv-req:PositionPercent</Term>
                     <Name>Position percent</Name>
-                    <Description>A specific requirement about the percent of the project exeperience position.</Description>
+                    <Description>Percent of the position relevant for the experience</Description>
+                    <DataType>Percentage</DataType>
                     <Value type="EXAMPLE">100</Value>
                     <Reference type="RULE">EHF-CV-REQ-R005</Reference>
                 </Element>
 
-                <Element>
+                <Element cardinality="0..1">
                     <Term>cv-req:Role</Term>
                     <Name>Role</Name>
-                    <Description>A specific requirement about the role of the project experience.</Description>
+                    <Description>The candidates role in the project according to code list</Description>
+                    <DataType>Code</DataType>
                     <Reference type="CODE_LIST">styrk98</Reference>
-                    <Value type="EXAMPLE">1210178</Value>
+                    <Value type="EXAMPLE">2130110</Value>
                 </Element>
 
                 <Element cardinality="0..1">
                     <Term>cv-req:Activities</Term>
                     <Name>Activities</Name>
-                    <Description>Detailed description about what the cancdidate need to have done in the specific project experience. E.g. Finance analysis</Description>
-                    <Value type="EXAMPLE">Must have done financial analysis by using R.</Value>
+                    <Description>Description of activities performed</Description>
+                    <DataType>Text</DataType>
+                    <Value type="EXAMPLE">Must coordinate companies web-portal.</Value>
                 </Element>
             </Element>
 
             <Element cardinality="0..1">
                 <Term>cv-req:ExperienceValue</Term>
-                <Name>Experience value</Name>
-                <Description>Detailed description about the project value</Description>
+                <Name>EXPERIENCE VALUE</Name>
+                <Description>Value of the project experience</Description>
 
-                <Element>
+                <Element cardinality="0..1">
                     <Term>cv-req:ProjectParticipation</Term>
                     <Name>Project participation</Name>
-                    <Description>A specific requirement about candidate's project participation.</Description>
-                    <Value type="EXAMPLE">5</Value>
+                    <Description>Length of the project experience</Description>
+                    <DataType>Quantity</DataType>
+                    <Value type="EXAMPLE">40</Value>
                     <Reference type="RULE">EHF-CV-REQ-R006</Reference>
 
                     <Attribute>
-                        <Term>unitOfMeasure</Term>
+                        <Term>unitCode</Term>
                         <Name>Unit of measure</Name>
                         <Value type="EXAMPLE">MON</Value>
                     </Attribute>
@@ -848,104 +904,112 @@
                 <Element cardinality="0..1">
                     <Term>cv-req:ProjectSize</Term>
                     <Name>Project size</Name>
-                    <Description>A specific requirement about the total size of the project.</Description>
+                    <Description>Size of the project</Description>
+                    <DataType>Quantity</DataType>
                     <Value type="EXAMPLE">5</Value>
                     <Reference type="RULE">EHF-CV-REQ-R007</Reference>
- 
+
                     <Attribute>
-                        <Term>Uom</Term>
-                        <Name>UnitOfMeasure</Name>
-                        <Value type="EXAMPLE">MON</Value>
+                        <Term>unitCode</Term>
+                        <Name>Unit of measure</Name>
+                        <Value type="EXAMPLE">ANN</Value>
                     </Attribute>
-               </Element>
+                </Element>
 
                 <Element cardinality="0..1">
                     <Term>cv-req:ProjectValue</Term>
-                    <Name>Project Value</Name>
-                    <Description>Total value of the project.</Description>
+                    <Name>Project value</Name>
+                    <Description>Value of the project in money</Description>
+                    <DataType>Amount</DataType>
+                    <Value type="EXAMPLE">1500000</Value>
                     <Reference type="RULE">EHF-CV-REQ-R008</Reference>
 
                     <Attribute>
-                        <Term>unitOfMeasure</Term>
-                        <Name>Unit of measure</Name>
+                        <Term>currencyID</Term>
+                        <Name>Currency</Name>
                         <Reference type="CODE_LIST">ISO4217</Reference>
                         <Value type="EXAMPLE">NOK</Value>
                     </Attribute>
-
-                    <Value type="EXAMPLE">100</Value>
                 </Element>
             </Element>
 
             <Element cardinality="0..n">
                 <Term>cv-req:AlternativeProjectExperience</Term>
-                <Name>Alternative project experience requirements</Name>
-                <Description>If alternative project experience requirement is accepted.</Description>
+                <Name>Alternative project experience</Name>
+                <Description>Alternative to main requirement</Description>
 
                 <Element>
                     <Term>cv-req:ID</Term>
-                    <Name>Project experience Identifier</Name>
-                    <Description>Each line must have an identifier that is unique within the document to make it possible to positively reference the line.
-                        For example, from other documents.</Description>
+                    <Name>Identification</Name>
+                    <Description>ID for project experience</Description>
+                    <DataType>Identifier</DataType>
                     <Value type="EXAMPLE">1</Value>
                 </Element>
 
                 <Element cardinality="0..1">
                     <Term>cv-req:Requirement</Term>
-                    <Name>Project experience Requirement</Name>
-                    <Description>Requirement related to the specific project experience.</Description>
+                    <Name>Requirement</Name>
+                    <Description>Legal values: must or should</Description>
+                    <DataType>Code</DataType>
                     <Reference type="CODE_LIST">requirement</Reference>
-                    <Value type="EXAMPLE">must</Value>
+                    <Value type="EXAMPLE">should</Value>
                 </Element>
 
-                <Element>
+                <Element cardinality="0..1">
                     <Term>cv-req:ExperienceType</Term>
                     <Name>Experience type</Name>
-                    <Description>A specific requirement about a type of experience. Expressed by using classification of occupations code.</Description>
+                    <Description>Type of project experience according to code list</Description>
+                    <DataType>Code</DataType>
                     <Reference type="CODE_LIST">styrk98</Reference>
-                    <Value type="EXAMPLE">1224117</Value>
+                    <Value type="EXAMPLE">2130111</Value>
                 </Element>
 
                 <Element cardinality="0..1">
                     <Term>cv-req:IndustryType</Term>
                     <Name>Industry type</Name>
-                    <Description>A requirement about a industry related to project experience. Use code list NACE.</Description>
+                    <Description>Type of industry according to code list</Description>
+                    <DataType>Code</DataType>
                     <Reference type="CODE_LIST">NACE</Reference>
-                    <Value type="EXAMPLE">01190</Value>
+                    <Value type="EXAMPLE">62010</Value>
                 </Element>
 
                 <Element cardinality="0..1">
                     <Term>cv-req:Workplace</Term>
                     <Name>Work place</Name>
-                    <Description>A project experience related to a work place, country. Use code list ISO3166.</Description>
+                    <Description>Country code according to code list</Description>
+                    <DataType>Code</DataType>
                     <Reference type="CODE_LIST">ISO3166</Reference>
-                    <Value type="EXAMPLE">AI</Value>
+                    <Value type="EXAMPLE">FR</Value>
                 </Element>
 
                 <Element cardinality="0..1">
                     <Term>cv-req:JobSector</Term>
                     <Name>Job sector</Name>
-                    <Description>A project experience related to a job sector. Use code list sector.</Description>
+                    <Description>Private, public or other according to code list</Description>
+                    <DataType>Code</DataType>
                     <Reference type="CODE_LIST">sector</Reference>
                     <Value type="EXAMPLE">private</Value>
                 </Element>
 
                 <Element cardinality="0..1">
                     <Term>cv-req:RequiredTotalExperience</Term>
-                    <Name>Required total experience</Name>
-                    <Description>A requirement about total exeperience. Need to provide a amount of either minimum or maximum experience.</Description>
+                    <Name>REQUIRED TOTAL EXPERIENCE</Name>
+                    <Description>Required total project experience</Description>
 
-                    <Element>
+                    <Element cardinality="0..1">
                         <Term>cv-req:MinimumYearsExperience</Term>
                         <Name>Minimum years experience</Name>
-                        <Description>A specific requirement about minimum year of experience.</Description>
+                        <Description>Minimum years of experience</Description>
+                        <DataType>Numeric</DataType>
                         <Value type="EXAMPLE">2</Value>
                         <Reference type="RULE">EHF-CV-REQ-R004</Reference>
                     </Element>
 
-                    <Element>
+                    <Element cardinality="0..1">
                         <Term>cv-req:MaximumYearsExperience</Term>
                         <Name>Maximum years experience</Name>
-                        <Description>A specific requirement about maximum year of experience.</Description>
+                        <Description>Maximum years of experience</Description>
+                        <DataType>Numeric</DataType>
                         <Value type="EXAMPLE">6</Value>
                         <Reference type="RULE">EHF-CV-REQ-R004</Reference>
                     </Element>
@@ -953,92 +1017,111 @@
 
                 <Element cardinality="0..1">
                     <Term>cv-req:Period</Term>
-                    <Name>Period</Name>
-                    <Description>The period the project experience need to been completed.</Description>
+                    <Name>PERIOD</Name>
+                    <Description>Period for the project experience</Description>
 
-                    <Element>
+                    <Element cardinality="0..1">
                         <Term>cv-req:StartDate</Term>
                         <Name>Start date</Name>
-                        <Description>Project experience start date.</Description>
-                        <Value type="EXAMPLE">2020-01-19</Value>
+                        <Description>The start of the ProjectExperience period. Format "YYYY-MM-DD"</Description>
+                        <DataType>Date</DataType>
+                        <Value type="EXAMPLE">2023-01-10</Value>
                         <Reference type="RULE">EHF-CV-REQ-R002</Reference>
                         <Reference type="RULE">EHF-COMMON-R031</Reference>
                     </Element>
 
-                    <Element>
+                    <Element cardinality="0..1">
                         <Term>cv-req:EndDate</Term>
                         <Name>End date</Name>
-                        <Description>Project experience end date.</Description>
-                        <Value type="EXAMPLE">2020-10-02</Value>
+                        <Description>The end of the ProjectExperience period. Format "YYYY-MM-DD"</Description>
+                        <DataType>Date</DataType>
+                        <Value type="EXAMPLE">2024-12-31</Value>
                         <Reference type="RULE">EHF-CV-REQ-R002</Reference>
                         <Reference type="RULE">EHF-COMMON-R031</Reference>
                     </Element>
                 </Element>
 
-                <Element>
+                <Element cardinality="0..1">
                     <Term>cv-req:ExperienceDescription</Term>
-                    <Name>Project experience description</Name>
-                    <Description>Detailed description about the requirement of project experion</Description>
+                    <Name>EXPERIENCE DESCRIPTION</Name>
+                    <Description>Description of the project experience</Description>
 
-                    <Element cardinality="0..1">
+                    <Element>
                         <Term>cv-req:PositionPercent</Term>
                         <Name>Position percent</Name>
-                        <Description>A specific requirement about the percent of the project exeperience position.</Description>
+                        <Description>Percent of the position relevant for the experience</Description>
+                        <DataType>Percentage</DataType>
                         <Value type="EXAMPLE">100</Value>
                         <Reference type="RULE">EHF-CV-REQ-R005</Reference>
                     </Element>
 
-                    <Element>
+                    <Element cardinality="0..1">
                         <Term>cv-req:Role</Term>
                         <Name>Role</Name>
-                        <Description>A specific requirement about the role of the project experience.</Description>
+                        <Description>The candidates role in the project according to code list</Description>
+                        <DataType>Code</DataType>
                         <Reference type="CODE_LIST">styrk98</Reference>
-                        <Value type="EXAMPLE">1227243</Value>
+                        <Value type="EXAMPLE">2130114</Value>
                     </Element>
 
                     <Element cardinality="0..1">
                         <Term>cv-req:Activities</Term>
                         <Name>Activities</Name>
-                        <Description>Detailed description about what the cancdidate need to have done in the specific project experience. E.g. Finance analysis</Description>
-                        <Value type="EXAMPLE">Must have done financial analysis by using R.</Value>
+                        <Description>Description of activities performed</Description>
+                        <DataType>Text</DataType>
+                        <Value type="EXAMPLE">Developing IT-system.</Value>
                     </Element>
                 </Element>
 
                 <Element cardinality="0..1">
                     <Term>cv-req:ExperienceValue</Term>
-                    <Name>Experience value</Name>
-                    <Description>Detailed description about the project value</Description>
+                    <Name>EXPERIENCE VALUE</Name>
+                    <Description>Value of the project experience</Description>
 
-                    <Element>
+                    <Element cardinality="0..1">
                         <Term>cv-req:ProjectParticipation</Term>
                         <Name>Project participation</Name>
-                        <Description>A specific requirement about candidate's project participation, stated as months.</Description>
+                        <Description>Length of the project experience</Description>
+                        <DataType>Quantity</DataType>
                         <Value type="EXAMPLE">5</Value>
                         <Reference type="RULE">EHF-CV-REQ-R006</Reference>
+
+                        <Attribute>
+                            <Term>unitCode</Term>
+                            <Name>Unit of measure</Name>
+                            <Value type="EXAMPLE">MON</Value>
+                        </Attribute>
                     </Element>
 
                     <Element cardinality="0..1">
                         <Term>cv-req:ProjectSize</Term>
                         <Name>Project size</Name>
-                        <Description>A specific requirement about the total size of the project, stated as months.</Description>
-                        <Value type="EXAMPLE">5</Value>
+                        <Description>Size of the project</Description>
+                        <DataType>Quantity</DataType>
+                        <Value type="EXAMPLE">15</Value>
                         <Reference type="RULE">EHF-CV-REQ-R007</Reference>
+
+                        <Attribute>
+                            <Term>unitCode</Term>
+                            <Name>Unit of measure</Name>
+                            <Value type="EXAMPLE">MON</Value>
+                        </Attribute>
                     </Element>
 
                     <Element cardinality="0..1">
                         <Term>cv-req:ProjectValue</Term>
-                        <Name>Project Value</Name>
-                        <Description>Total value of the project.</Description>
+                        <Name>Project value</Name>
+                        <Description>Value of the project in money</Description>
+                        <DataType>Amount</DataType>
+                        <Value type="EXAMPLE">1500000</Value>
                         <Reference type="RULE">EHF-CV-REQ-R008</Reference>
 
                         <Attribute>
                             <Term>currencyID</Term>
-                            <Name>Currencyidentifier</Name>
+                            <Name>Currency</Name>
                             <Reference type="CODE_LIST">ISO4217</Reference>
                             <Value type="EXAMPLE">NOK</Value>
                         </Attribute>
-
-                        <Value type="EXAMPLE">100000</Value>
                     </Element>
                 </Element>
             </Element>
@@ -1046,29 +1129,31 @@
 
         <Element cardinality="0..n">
             <Term>cv-req:WorkExperience</Term>
-            <Name>Work experience requirements</Name>
-            <Description>Work experience related requirements.</Description>
+            <Name>Work experience</Name>
+            <Description>A group of business terms providing information about work experience</Description>
 
             <Element>
                 <Term>cv-req:ID</Term>
-                <Name>Work experience Identifier</Name>
-                <Description>Each line must have an identifier that is unique within the document to make it possible to positively reference the line.
-                    For example, from other documents.</Description>
+                <Name>Identification</Name>
+                <Description>ID for work experience</Description>
+                <DataType>Identifier</DataType>
                 <Value type="EXAMPLE">1</Value>
             </Element>
 
             <Element cardinality="0..1">
                 <Term>cv-req:Requirement</Term>
-                <Name>Work experience Requirement</Name>
-                <Description>Requirement related to the specific work experience.</Description>
+                <Name>Requirement</Name>
+                <Description>Legal values: must or should</Description>
+                <DataType>Code</DataType>
                 <Reference type="CODE_LIST">requirement</Reference>
-                <Value type="EXAMPLE">must</Value>
+                <Value type="EXAMPLE">should</Value>
             </Element>
 
-            <Element>
+            <Element cardinality="0..1">
                 <Term>cv-req:PositionLevel</Term>
                 <Name>Position level</Name>
-                <Description>A specific requirement about candidates position level. Use code list.</Description>
+                <Description>Level of position according to code list</Description>
+                <DataType>Code</DataType>
                 <Reference type="CODE_LIST">PositionLevel</Reference>
                 <Value type="EXAMPLE">employee</Value>
             </Element>
@@ -1076,527 +1161,404 @@
             <Element cardinality="0..1">
                 <Term>cv-req:IndustryType</Term>
                 <Name>Industry type</Name>
-                <Description>A requirement about a industry related to project experience. Use code list NACE.</Description>
+                <Description>Type of industry according to code list</Description>
+                <DataType>Code</DataType>
                 <Reference type="CODE_LIST">NACE</Reference>
-                <Value type="EXAMPLE">01230</Value>
+                <Value type="EXAMPLE">62010</Value>
             </Element>
 
             <Element cardinality="0..1">
                 <Term>cv-req:Workplace</Term>
                 <Name>Work place</Name>
-                <Description>A project experience related to a work place, country. Use code list ISO3166.</Description>
+                <Description>Country code according to code list</Description>
+                <DataType>Code</DataType>
                 <Reference type="CODE_LIST">ISO3166</Reference>
-                <Value type="EXAMPLE">AI</Value>
+                <Value type="EXAMPLE">FR</Value>
             </Element>
 
-            <Element>
+            <Element cardinality="0..1">
                 <Term>cv-req:JobSector</Term>
                 <Name>Job sector</Name>
-                <Description>A project experience related to a job sector. Use code list sector.</Description>
+                <Description>Private, public or other according to code list</Description>
+                <DataType>Code</DataType>
                 <Reference type="CODE_LIST">sector</Reference>
                 <Value type="EXAMPLE">private</Value>
             </Element>
 
-            <Element>
+            <Element cardinality="0..1">
                 <Term>cv-req:MinimumYearsExperience</Term>
                 <Name>Minimum years experience</Name>
-                <Description>Requirement about minum total year of work experience.</Description>
-                <Value type="EXAMPLE">5</Value>
+                <Description>Minimum years of experience</Description>
+                <DataType>Numeric</DataType>
+                <Value type="EXAMPLE">2</Value>
             </Element>
 
             <Element cardinality="0..1">
                 <Term>cv-req:Period</Term>
-                <Name>Period</Name>
-                <Description>The period the work experience need to been completed.</Description>
+                <Name>PERIOD</Name>
+                <Description>Period for the work experience</Description>
 
-                <Element>
+                <Element cardinality="0..1">
                     <Term>cv-req:StartDate</Term>
                     <Name>Start date</Name>
-                    <Description>Work experience start date.</Description>
-                    <Value type="EXAMPLE">2020-01-19</Value>
+                    <Description>The start of the WorkExperience period. Format "YYYY-MM-DD"</Description>
+                    <DataType>Date</DataType>
+                    <Value type="EXAMPLE">2023-01-10</Value>
                     <Reference type="RULE">EHF-CV-REQ-R002</Reference>
                     <Reference type="RULE">EHF-COMMON-R031</Reference>
                 </Element>
 
-                <Element>
+                <Element cardinality="0..1">
                     <Term>cv-req:EndDate</Term>
                     <Name>End date</Name>
-                    <Description>Work experience end date.</Description>
-                    <Value type="EXAMPLE">2020-10-02</Value>
+                    <Description>The end of the WorkExperience period. Format "YYYY-MM-DD"</Description>
+                    <DataType>Date</DataType>
+                    <Value type="EXAMPLE">2024-12-31</Value>
                     <Reference type="RULE">EHF-CV-REQ-R002</Reference>
                     <Reference type="RULE">EHF-COMMON-R031</Reference>
                 </Element>
             </Element>
 
-            <Element>
+            <Element cardinality="0..1">
                 <Term>cv-req:WorkExperienceDescription</Term>
-                <Name>Work experience description</Name>
-                <Description>Detailed description about the requirement of work experion</Description>
+                <Name>WORK EXPERIENCE DESCRIPTION</Name>
+                <Description>Description of the work experience</Description>
 
-                <Element cardinality="0..1">
+                <Element>
                     <Term>cv-req:PositionPercent</Term>
                     <Name>Position percent</Name>
-                    <Description>A specific requirement about the percent of the work exeperience position.</Description>
+                    <Description>Percent of the position relevant for the experience</Description>
+                    <DataType>Percentage</DataType>
                     <Value type="EXAMPLE">100</Value>
                     <Reference type="RULE">EHF-CV-REQ-R005</Reference>
                 </Element>
 
-                <Element>
+                <Element cardinality="0..1">
                     <Term>cv-req:Role</Term>
                     <Name>Role</Name>
-                    <Description>A specific requirement about the role of the work experience.</Description>
+                    <Description>The candidates role in the position according to code list</Description>
+                    <DataType>Code</DataType>
                     <Reference type="CODE_LIST">styrk98</Reference>
-                    <Value type="EXAMPLE">1234106</Value>
+                    <Value type="EXAMPLE">2130163</Value>
                 </Element>
 
                 <Element cardinality="0..1">
                     <Term>cv-req:Activities</Term>
                     <Name>Activities</Name>
-                    <Description>Detailed description about what the cancdidate need to have done in the specific work experience. E.g. Mathematical analysis</Description>
-                    <Value type="EXAMPLE">Must have done mathemathical analysis by using Python.</Value>
+                    <Description>Description of activities performed</Description>
+                    <DataType>Text</DataType>
+                    <Value type="EXAMPLE">Testing and developing IT-systems in X company</Value>
                 </Element>
             </Element>
 
             <Element cardinality="0..n">
                 <Term>cv-req:AlternativeWorkExperience</Term>
-                <Name>Alternative project experience requirements</Name>
-                <Description>If alternative project experience requirement is accepted.</Description>
+                <Name>Alternative work experience</Name>
+                <Description>Alternative to main requirement</Description>
 
                 <Element>
                     <Term>cv-req:ID</Term>
-                    <Name>Work experience Identifier</Name>
-                    <Description>Each line must have an identifier that is unique within the document to make it possible to positively reference the line.
-                        For example, from other documents.</Description>
+                    <Name>Identification</Name>
+                    <Description>ID for work experience</Description>
+                    <DataType>Identifier</DataType>
                     <Value type="EXAMPLE">1</Value>
                 </Element>
 
                 <Element cardinality="0..1">
                     <Term>cv-req:Requirement</Term>
-                    <Name>Work experience Requirement</Name>
-                    <Description>Requirement related to the specific work experience.</Description>
+                    <Name>Requirement</Name>
+                    <Description>Legal values: must or should</Description>
+                    <DataType>Code</DataType>
                     <Reference type="CODE_LIST">requirement</Reference>
                     <Value type="EXAMPLE">should</Value>
                 </Element>
 
-                <Element>
+                <Element cardinality="0..1">
                     <Term>cv-req:PositionLevel</Term>
                     <Name>Position level</Name>
-                    <Description>A specific requirement about candidates position level. Use code list.</Description>
+                    <Description>Level of position according to code list</Description>
+                    <DataType>Code</DataType>
                     <Reference type="CODE_LIST">PositionLevel</Reference>
-                    <Value type="EXAMPLE">MiddleLevelManager</Value>
+                    <Value type="EXAMPLE">manager</Value>
                 </Element>
 
                 <Element cardinality="0..1">
                     <Term>cv-req:IndustryType</Term>
                     <Name>Industry type</Name>
-                    <Description>A requirement about a industry related to project experience. Use code list NACE.</Description>
+                    <Description>Type of industry according to code list</Description>
+                    <DataType>Code</DataType>
                     <Reference type="CODE_LIST">NACE</Reference>
-                    <Value type="EXAMPLE">01479</Value>
+                    <Value type="EXAMPLE">62010</Value>
                 </Element>
 
                 <Element cardinality="0..1">
                     <Term>cv-req:Workplace</Term>
                     <Name>Work place</Name>
-                    <Description>A project experience related to a work place, country. Use code list ISO3166.</Description>
+                    <Description>Country code according to code list</Description>
+                    <DataType>Code</DataType>
                     <Reference type="CODE_LIST">ISO3166</Reference>
-                    <Value type="EXAMPLE">AI</Value>
+                    <Value type="EXAMPLE">FR</Value>
                 </Element>
 
-                <Element>
+                <Element cardinality="0..1">
                     <Term>cv-req:JobSector</Term>
                     <Name>Job sector</Name>
-                    <Description>A project experience related to a job sector. Use code list sector.</Description>
+                    <Description>Private, public or other according to code list</Description>
+                    <DataType>Code</DataType>
                     <Reference type="CODE_LIST">sector</Reference>
                     <Value type="EXAMPLE">private</Value>
                 </Element>
 
-                <Element>
-                    <Term>cv-req:MinimumTotalExperience</Term>
-                    <Name>Minimum total experience</Name>
-                    <Description>Requirement about minum total year of work experience.</Description>
-                    <Value type="EXAMPLE">5</Value>
+                <Element cardinality="0..1">
+                    <Term>cv-req:MinimumYearsExperience</Term>
+                    <Name>Minimum years experience</Name>
+                    <Description>Minimum years of experience</Description>
+                    <DataType>Numeric</DataType>
+                    <Value type="EXAMPLE">2</Value>
                 </Element>
 
                 <Element cardinality="0..1">
                     <Term>cv-req:Period</Term>
-                    <Name>Period</Name>
-                    <Description>The period the work experience need to been completed.</Description>
+                    <Name>PERIOD</Name>
+                    <Description>Period for the work experience</Description>
 
-                    <Element>
+                    <Element cardinality="0..1">
                         <Term>cv-req:StartDate</Term>
                         <Name>Start date</Name>
-                        <Description>Work experience start date.</Description>
-                        <Value type="EXAMPLE">2020-01-19</Value>
+                        <Description>The start of the WorkExperience period. Format "YYYY-MM-DD"</Description>
+                        <DataType>Date</DataType>
+                        <Value type="EXAMPLE">2023-01-10</Value>
                         <Reference type="RULE">EHF-CV-REQ-R002</Reference>
                         <Reference type="RULE">EHF-COMMON-R031</Reference>
                     </Element>
 
-                    <Element>
+                    <Element cardinality="0..1">
                         <Term>cv-req:EndDate</Term>
                         <Name>End date</Name>
-                        <Description>Work experience end date.</Description>
-                        <Value type="EXAMPLE">2020-10-02</Value>
+                        <Description>The end of the WorkExperience period. Format "YYYY-MM-DD"</Description>
+                        <DataType>Date</DataType>
+                        <Value type="EXAMPLE">2024-12-31</Value>
                         <Reference type="RULE">EHF-CV-REQ-R002</Reference>
                         <Reference type="RULE">EHF-COMMON-R031</Reference>
                     </Element>
                 </Element>
 
-                <Element>
+                <Element cardinality="0..1">
                     <Term>cv-req:WorkExperienceDescription</Term>
-                    <Name>Work experience description</Name>
-                    <Description>Detailed description about the requirement of work experion</Description>
+                    <Name>WORK EXPERIENCE DESCRIPTION</Name>
+                    <Description>Description of the work experience</Description>
 
-                    <Element cardinality="0..1">
+                    <Element>
                         <Term>cv-req:PositionPercent</Term>
                         <Name>Position percent</Name>
-                        <Description>A specific requirement about the percent of the work exeperience position.</Description>
+                        <Description>Percent of the position relevant for the experience</Description>
+                        <DataType>Percentage</DataType>
                         <Value type="EXAMPLE">100</Value>
                         <Reference type="RULE">EHF-CV-REQ-R005</Reference>
                     </Element>
 
-                    <Element>
+                    <Element cardinality="0..1">
                         <Term>cv-req:Role</Term>
                         <Name>Role</Name>
-                        <Description>A specific requirement about the role of the work experience.</Description>
+                        <Description>The candidates role in the position according to code list</Description>
+                        <DataType>Code</DataType>
                         <Reference type="CODE_LIST">styrk98</Reference>
-                        <Value type="EXAMPLE">1235104</Value>
+                        <Value type="EXAMPLE">2130163</Value>
                     </Element>
 
                     <Element cardinality="0..1">
                         <Term>cv-req:Activities</Term>
                         <Name>Activities</Name>
-                        <Description>Detailed description about what the cancdidate need to have done in the specific work experience. E.g. Mathematical analysis</Description>
-                        <Value type="EXAMPLE">Must have done mathemathical analysis by using Python.</Value>
+                        <Description>Description of activities performed</Description>
+                        <DataType>Text</DataType>
+                        <Value type="EXAMPLE">Testing and developing IT-systems in X company</Value>
                     </Element>
+                </Element>
+            </Element>
+        </Element>
+
+        <Element cardinality="0..n">
+            <Term>cv-req:Skills</Term>
+            <Name>Skills</Name>
+            <Description>A group of business terms providing information about Skills</Description>
+
+            <Element>
+                <Term>cv-req:ID</Term>
+                <Name>Identification</Name>
+                <Description>ID for Skills</Description>
+                <DataType>Identifier</DataType>
+                <Value type="EXAMPLE">1</Value>
+            </Element>
+
+            <Element cardinality="0..1">
+                <Term>cv-req:Requirement</Term>
+                <Name>Requirement</Name>
+                <Description>Legal values: must or should</Description>
+                <DataType>Code</DataType>
+                <Reference type="CODE_LIST">requirement</Reference>
+                <Value type="EXAMPLE">should</Value>
+            </Element>
+
+            <Element cardinality="0..1">
+                <Term>cv-req:Type</Term>
+                <Name>Type</Name>
+                <Description>Type of skills according to code list</Description>
+                <DataType>Code</DataType>
+                <Reference type="CODE_LIST">SkillsType</Reference>
+                <Value type="EXAMPLE">java</Value>
+            </Element>
+
+            <Element cardinality="0..1">
+                <Term>cv-req:VersionID</Term>
+                <Name>Version</Name>
+                <Description>Version of skill</Description>
+                <DataType>Identifier</DataType>
+                <Value type="EXAMPLE">9</Value>
+            </Element>
+
+            <Element cardinality="0..1">
+                <Term>cv-req:LastPractice</Term>
+                <Name>Last practice</Name>
+                <Description>Date for last practice of the skill. Format "YYYY-MM-DD"</Description>
+                <DataType>Date</DataType>
+                <Value type="EXAMPLE">2023-01-10</Value>
+                <Reference type="RULE">EHF-COMMON-R031</Reference>
+            </Element>
+
+            <Element cardinality="0..1">
+                <Term>cv-req:MinimumLengthPractice</Term>
+                <Name>Minimum length of practice</Name>
+                <Description>Minimum length of practice including unit of measure</Description>
+                <DataType>Quantity</DataType>
+                <Value type="EXAMPLE">5</Value>
+                <Reference type="RULE">EHF-CV-REQ-R012</Reference>
+
+                <Attribute>
+                    <Term>unitCode</Term>
+                    <Name>Unit of measure</Name>
+                    <Value type="EXAMPLE">MON</Value>
+                </Attribute>
+            </Element>
+
+            <Element cardinality="0..1">
+                <Term>cv-req:SkillsReference</Term>
+                <Name>Skills reference</Name>
+                <Description>To specify the need for a reference/contact person. true or false</Description>
+                <DataType>Indicator</DataType>
+                <Value type="EXAMPLE">true</Value>
+            </Element>
+
+            <Element cardinality="0..n">
+                <Term>cv-req:AlternativeSkills</Term>
+                <Name>Alternative skills</Name>
+                <Description>Alternative to main requirement</Description>
+
+                <Element>
+                    <Term>cv-req:ID</Term>
+                    <Name>Identification</Name>
+                    <Description>ID for Skills</Description>
+                    <DataType>Identifier</DataType>
+                    <Value type="EXAMPLE">1</Value>
+                </Element>
+
+                <Element cardinality="0..1">
+                    <Term>cv-req:Requirement</Term>
+                    <Name>Requirement</Name>
+                    <Description>Legal values: must or should</Description>
+                    <DataType>Code</DataType>
+                    <Reference type="CODE_LIST">requirement</Reference>
+                    <Value type="EXAMPLE">must</Value>
+                </Element>
+
+                <Element cardinality="0..1">
+                    <Term>cv-req:Type</Term>
+                    <Name>Type</Name>
+                    <Description>Type of skills according to code list</Description>
+                    <DataType>Code</DataType>
+                    <Reference type="CODE_LIST">SkillsType</Reference>
+                    <Value type="EXAMPLE">java</Value>
+                </Element>
+
+                <Element cardinality="0..1">
+                    <Term>cv-req:VersionID</Term>
+                    <Name>Version</Name>
+                    <Description>Version of skill</Description>
+                    <DataType>Identifier</DataType>
+                    <Value type="EXAMPLE">8</Value>
+                </Element>
+
+                <Element cardinality="0..1">
+                    <Term>cv-req:LastPractice</Term>
+                    <Name>Last practice</Name>
+                    <Description>Date for last practice of the skill. Format "YYYY-MM-DD"</Description>
+                    <DataType>Date</DataType>
+                    <Value type="EXAMPLE">2023-01-10</Value>
+                    <Reference type="RULE">EHF-COMMON-R031</Reference>
+                </Element>
+
+                <Element cardinality="0..1">
+                    <Term>cv-req:MinimumLengthPractice</Term>
+                    <Name>Minimum length of practice</Name>
+                    <Description>Minimum length of practice including unit of measure</Description>
+                    <DataType>Quantity</DataType>
+                    <Value type="EXAMPLE">5</Value>
+                    <Reference type="RULE">EHF-CV-REQ-R012</Reference>
+
+                    <Attribute>
+                        <Term>unitCode</Term>
+                        <Name>Unit of measure</Name>
+                        <Value type="EXAMPLE">MON</Value>
+                    </Attribute>
+                </Element>
+
+                <Element cardinality="0..1">
+                    <Term>cv-req:SkillsReference</Term>
+                    <Name>Skills reference</Name>
+                    <Description>To specify the need for a reference/contact person. true or false</Description>
+                    <DataType>Indicator</DataType>
+                    <Value type="EXAMPLE">true</Value>
                 </Element>
             </Element>
         </Element>
 
         <Element cardinality="0..n">
             <Term>cv-req:Clearance</Term>
-            <Name>Clearance requirements</Name>
-            <Description>Clearance related requirements.</Description>
+            <Name>Clearance</Name>
+            <Description>Information about requested clearances</Description>
 
             <Element>
                 <Term>cv-req:ID</Term>
-                <Name>Clearance Identifier</Name>
-                <Description>Each line must have an identifier that is unique within the document to make it possible to positively reference the line.
-                    For example, from other documents.</Description>
+                <Name>Identification</Name>
+                <Description>ID for Clearance</Description>
+                <DataType>Identifier</DataType>
                 <Value type="EXAMPLE">1</Value>
             </Element>
 
             <Element cardinality="0..1">
                 <Term>cv-req:Requirement</Term>
-                <Name>Clearance Requirement</Name>
-                <Description>Requirement related to the specific clearance.</Description>
+                <Name>Requirement</Name>
+                <Description>Legal values: must or should</Description>
+                <DataType>Code</DataType>
                 <Reference type="CODE_LIST">requirement</Reference>
-                <Value type="EXAMPLE">desirable</Value>
-            </Element>
-
-            <Element>
-                <Term>cv-req:Title</Term>
-                <Name>Clearance title</Name>
-                <Description>The specific name of the clearance.</Description>
-                <Value type="EXAMPLE">HMS</Value>
-                <Reference type="RULE">EHF-CV-REQ-R009</Reference>
+                <Value type="EXAMPLE">must</Value>
             </Element>
 
             <Element cardinality="0..1">
-                <Term>cv-req:Type</Term>
-                <Name>Clearance type</Name>
-                <Description>The specific name of the clearance expressed as code.</Description>
-                <Reference type="CODE_LIST">ClearanceType</Reference>
-                <Value type="EXAMPLE">police</Value>
-                <Reference type="RULE">EHF-CV-REQ-R009</Reference>
-            </Element>
-
-            <Element>
                 <Term>cv-req:Level</Term>
-                <Name>Clearance level</Name>
-                <Description>The level of the clearance requirement.</Description>
+                <Name>Level</Name>
+                <Description>Level of clearance according to code list</Description>
+                <DataType>Code</DataType>
                 <Reference type="CODE_LIST">ClearanceLevel</Reference>
-                <Value type="EXAMPLE">secret</Value>
+                <Value type="EXAMPLE">SECRET</Value>
             </Element>
 
-            <Element>
+            <Element cardinality="0..1">
                 <Term>cv-req:ExpirationDate</Term>
-                <Name>Clearance expiration date</Name>
-                <Description>A specific requirement about the clearance expiration date.</Description>
-                <Value type="EXAMPLE">2025-05-05</Value>
+                <Name>Expiration date</Name>
+                <Description>Expiration date for the clearance. Format "YYYY-MM-DD"</Description>
+                <DataType>Date</DataType>
+                <Value type="EXAMPLE">2024-12-31</Value>
                 <Reference type="RULE">EHF-COMMON-R031</Reference>
-            </Element>
-
-            <Element cardinality="0..n">
-                <Term>cv-req:AlternativeClearance</Term>
-                <Name>Alternative clearance requirements</Name>
-                <Description>If alternative clearance requirement is accepted.</Description>
-
-                <Element>
-                    <Term>cv-req:ID</Term>
-                    <Name>Clearance Identifier</Name>
-                    <Description>Each line must have an identifier that is unique within the document to make it possible to positively reference the line.
-                        For example, from other documents.</Description>
-                    <Value type="EXAMPLE">1</Value>
-                </Element>
-
-                <Element cardinality="0..1">
-                    <Term>cv-req:Requirement</Term>
-                    <Name>Clearance Requirement</Name>
-                    <Description>Requirement related to the specific clearance.</Description>
-                    <Reference type="CODE_LIST">requirement</Reference>
-                    <Value type="EXAMPLE">must</Value>
-                </Element>
-
-                <Element>
-                    <Term>cv-req:Title</Term>
-                    <Name>Clearance title</Name>
-                    <Description>The specific name of the clearance.</Description>
-                    <Value type="EXAMPLE">HMS</Value>
-                    <Reference type="RULE">EHF-CV-REQ-R009</Reference>
-                </Element>
-
-                <Element cardinality="0..1">
-                    <Term>cv-req:Type</Term>
-                    <Name>Clearance type</Name>
-                    <Description>The specific name of the clearance expressed as code.</Description>
-                    <Reference type="CODE_LIST">ClearanceType</Reference>
-                    <Value type="EXAMPLE">politi</Value>
-                    <Reference type="RULE">EHF-CV-REQ-R009</Reference>
-                </Element>
-
-                <Element>
-                    <Term>cv-req:Level</Term>
-                    <Name>Clearance level</Name>
-                    <Description>The level of the clearance requirement.</Description>
-                    <Reference type="CODE_LIST">ClearanceLevel</Reference>
-                    <Value type="EXAMPLE">secret</Value>
-                </Element>
-
-                <Element>
-                    <Term>cv-req:ExpirationDate</Term>
-                    <Name>Clearance expiration date</Name>
-                    <Description>A specific requirement about the clearance expiration date.</Description>
-                    <Value type="EXAMPLE">2025-05-05</Value>
-                    <Reference type="RULE">EHF-COMMON-R031</Reference>
-                </Element>
-            </Element>
-        </Element>
-
-        <Element cardinality="0..1">
-            <Term>cv-req:Reference</Term>
-            <Name>Reference requirements</Name>
-
-            <Element>
-                <Term>cv-req:ID</Term>
-                <Name>Reference Identifier</Name>
-                <Description>Each line must have an identifier that is unique within the document to make it possible to positively reference the line.
-                    For example, from other documents.</Description>
-                <Value type="EXAMPLE">1</Value>
-            </Element>
-
-            <Element>
-                <Term>cv-req:MinimumTotalReference</Term>
-                <Name>Minimum total reference</Name>
-                <Description>Requirement about total minimum references, that need to be provided by the candidate.</Description>
-                <Value type="EXAMPLE">3</Value>
-                <Reference type="RULE">EHF-CV-REQ-R010</Reference>
-            </Element>
-        </Element>
-
-        <Element cardinality="0..n">
-            <Term>cv-req:Skills</Term>
-            <Name>Skills requirements</Name>
-            <Description>Skills related requirements.</Description>
-
-            <Element>
-                <Term>cv-req:ID</Term>
-                <Name>Skills identifier</Name>
-                <Description>Each line must have an identifier that is unique within the document to make it possible to positively reference the line.
-                    For example, from other documents.</Description>
-                <Value type="EXAMPLE">1</Value>
-            </Element>
-
-            <Element cardinality="0..1">
-                <Term>cv-req:Requirement</Term>
-                <Name>Skills requirement</Name>
-                <Description>Requirement related to the specific skill.</Description>
-                <Reference type="CODE_LIST">requirement</Reference>
-                <Value type="EXAMPLE">must</Value>
-            </Element>
-
-            <Element>
-                <Term>cv-req:Title</Term>
-                <Name>Skill title</Name>
-                <Description>The specific name of the skill.</Description>
-                <Value type="EXAMPLE">3Dmodelling</Value>
-                <Reference type="RULE">EHF-CV-REQ-R011</Reference>
-            </Element>
-
-            <Element cardinality="0..1">
-                <Term>cv-req:Type</Term>
-                <Name>Skill type</Name>
-                <Description>The specific name of the skill expressed as code.</Description>
-                <Reference type="CODE_LIST">SkillsType</Reference>
-                <Value type="EXAMPLE">java</Value>
-                <Reference type="RULE">EHF-CV-REQ-R011</Reference>
-            </Element>
-
-            <Element cardinality="0..1">
-                <Term>cv-req:Version</Term>
-                <Name>Skill version</Name>
-                <Description>The version of the skill.</Description>
-                <Value type="EXAMPLE">11</Value>
-            </Element>
-
-            <Element cardinality="0..1">
-                <Term>cv-req:SkillPractice</Term>
-                <Name>Skill practice</Name>
-                <Description>Detailed descrption about the skill practices</Description>
-
-                <Element>
-                    <Term>cv-req:LastPractice</Term>
-                    <Name>Skill last practice</Name>
-                    <Description>Last time the skill need to be practice.</Description>
-                    <Value type="EXAMPLE">2020-03-03</Value>
-                    <Reference type="RULE">EHF-COMMON-R031</Reference>
-                </Element>
-
-                <Element cardinality="0..1">
-                    <Term>cv-req:MinimumLengthPractice</Term>
-                    <Name>Skill minimum length practice</Name>
-                    <Description>How long the skill need to be practiced continously, state the minimum length as months.</Description>
-                    <Value type="EXAMPLE">5</Value>
-                    <Reference type="RULE">EHF-CV-REQ-R012</Reference>
- 
-                    <Attribute>
-                        <Term>unitOfMeasure</Term>
-                        <Name>Unit of Measure</Name>
-                        <Value type="EXAMPLE">MON</Value>
-                    </Attribute>
-                </Element>
-
-                <Element>
-                    <Term>cv-req:SkillsReference</Term>
-                    <Name>Skill reference</Name>
-                    <Description>If the skill need a reference or not. State true or false.</Description>
-                    <Reference type="CODE_LIST">SkillReference</Reference>
-                    <Value type="EXAMPLE">True</Value>
-                </Element>
-            </Element>
-
-            <Element cardinality="0..n">
-                <Term>cv-req:AlternativeSkills</Term>
-                <Name>Alternative skill requirements</Name>
-                <Description>If alternative skill requirement is accepted.</Description>
-
-                <Element>
-                    <Term>cv-req:ID</Term>
-                    <Name>Skills identifier</Name>
-                    <Description>Each line must have an identifier that is unique within the document to make it possible to positively reference the line.
-                        For example, from other documents.</Description>
-                    <Value type="EXAMPLE">1</Value>
-                </Element>
-
-                <Element cardinality="0..1">
-                    <Term>cv-req:Requirement</Term>
-                    <Name>Skills requirement</Name>
-                    <Description>Requirement related to the specific skill.</Description>
-                    <Reference type="CODE_LIST">requirement</Reference>
-                    <Value type="EXAMPLE">must</Value>
-                </Element>
-
-                <Element>
-                    <Term>cv-req:Title</Term>
-                    <Name>Skill title</Name>
-                    <Description>The specific name of the skill.</Description>
-                    <Value type="EXAMPLE">HMS</Value>
-                    <Reference type="RULE">EHF-CV-REQ-R011</Reference>
-                </Element>
-
-                <Element cardinality="0..1">
-                    <Term>cv-req:Type</Term>
-                    <Name>Skill type</Name>
-                    <Description>The specific name of the skill expressed as code.</Description>
-                    <Reference type="CODE_LIST">SkillsType</Reference>
-                    <Value type="EXAMPLE">Java</Value>
-                    <Reference type="RULE">EHF-CV-REQ-R011</Reference>
-                </Element>
-
-                <Element cardinality="0..1">
-                    <Term>cv-req:Version</Term>
-                    <Name>Skill version</Name>
-                    <Description>The version of the skill.</Description>
-                    <Value type="EXAMPLE">11</Value>
-                </Element>
-
-                <Element cardinality="0..1">
-                    <Term>cv-req:SkillPractice</Term>
-                    <Name>Skill practice</Name>
-                    <Description>Detailed description about the skill.</Description>
-
-                    <Element>
-                        <Term>cv-req:LastPractice</Term>
-                        <Name>Skill last practice</Name>
-                        <Description>Last time the skill need to be practice.</Description>
-                        <Value type="EXAMPLE">2020-03-03</Value>
-                        <Reference type="RULE">EHF-COMMON-R031</Reference>
-                    </Element>
-
-                    <Element cardinality="0..1">
-                        <Term>cv-req:MinimumLengthPractice</Term>
-                        <Name>Skill minimum length practice</Name>
-                        <Description>How long the skill need to be practiced continously, state the minimum length as months.</Description>
-                        <Value type="EXAMPLE">5</Value>
-                        <Reference type="RULE">EHF-CV-REQ-R012</Reference>
-                    </Element>
-
-                    <Element>
-                        <Term>cv-req:SkillsReference</Term>
-                        <Name>Skill reference</Name>
-                        <Description>If the skill need a reference or not. State true or false.</Description>
-                        <Reference type="CODE_LIST">SkillReference</Reference>
-                        <Value type="EXAMPLE">True</Value>
-                    </Element>
-                </Element>
-            </Element>
-        </Element>
-
-        <Element cardinality="0..n">
-            <Term>cv-req:PersonalSkills</Term>
-            <Name>Skills requirements</Name>
-            <Description>Skills related requirements.</Description>
-
-            <Element>
-                <Term>cv-req:ID</Term>
-                <Name>Personal skills identifier</Name>
-                <Description>Each line must have an identifier that is unique within the document to make it possible to positively reference the line.
-                    For example, from other documents.</Description>
-                <Value type="EXAMPLE">1</Value>
-            </Element>
-
-            <!--<Element cardinality="0..1"> Ikke tatt med, noen lurt å ha med?
-                <Term>cv-req:Requirement</Term>
-                <Name>Personal skills requirement</Name>
-                <Description>Requirement related to the specific personal skill.</Description>
-                <Reference type="CODE_LIST">requirement</Reference>
-                <Value type="EXAMPLE">must</Value>
-            </Element> -->
-
-            <Element>
-                <Term>cv-req:Title</Term>
-                <Name>Personal skill title</Name>
-                <Description>The specific name of the personal skill.</Description>
-                <Value type="EXAMPLE">HMS</Value>
-                <Reference type="RULE">EHF-CV-REQ-R013</Reference>
-            </Element>
-
-            <Element cardinality="0..1">
-                <Term>cv-req:Type</Term>
-                <Name>Personal skill type</Name>
-                <Description>The specific name of the personal skill expressed as code.</Description>
-                <Reference type="CODE_LIST">PersonalSkills</Reference>
-                <Value type="EXAMPLE">listening</Value>
-                <Reference type="RULE">EHF-CV-REQ-R013</Reference>
             </Element>
         </Element>
 

@@ -14,6 +14,9 @@ Semantic data type content may be of the following primitive types. These primit
 |Date
 |Time point representing a calendar day on a time scale consisting of an origin and a succession of calendar {ISO8601}.
 
+|Time
+|Time point representing a time of day on a time scale consisting of an origin and a succession of instants {ISO8601}.
+
 |Decimal
 |A subset of the real numbers, which can be represented by decimal numerals.
 

@@ -2,7 +2,7 @@
 
 Personal details about the applicant. Is only used in CV and not in CV request.
 
-.Example of a description of personal skill in a CV
+.Example of a description of personal information in a CV
 [source, xml, indent=0]
 ----
 include::../{snippet-dir-cv}/cv.xml[tags=PersonalInformation]

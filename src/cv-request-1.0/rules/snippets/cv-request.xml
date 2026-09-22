@@ -1,30 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cv-req:CVRequest xmlns:cv-req="urn:fdc:anskaffelser.no:2019:ehf:schema:CVRequest-1">
-  <cv-req:ID>1</cv-req:ID>
-  <cv-req:IssueDate>2024-02-02</cv-req:IssueDate>
-  <cv-req:IssueTime>08:30:00</cv-req:IssueTime>
+
+  <!-- tag::Header[] -->
+  <cv-req:CustomizationID>urn:fdc:anskaffelser.no:2019:ehf:cvrequest:1</cv-req:CustomizationID><!--1-->
+  <cv-req:ProfileID>urn:fdc:anskaffelser.no:2019:ehf-cv:1</cv-req:ProfileID><!--2-->
+  <cv-req:ID>1</cv-req:ID><!--3-->
+  <cv-req:RoleDescription>Developer</cv-req:RoleDescription><!--4-->
+  <cv-req:IssueDate>2024-02-02</cv-req:IssueDate><!--5-->
+  <cv-req:IssueTime>08:30:00</cv-req:IssueTime><!--6-->
+  <!-- end::Header[] -->
  
   <!-- tag::Sender[] -->
   <cv-req:SenderParty>
+    <cv-req:Party>
     <cv-req:EndpointID schemeID="0192">987654325</cv-req:EndpointID><!--1-->
-    <cv-req:Name>Digitaliseringsdirektoratet</cv-req:Name>
+    <cv-req:PartyName>
+      <cv-req:Name>Digitaliseringsdirektoratet</cv-req:Name>
+    </cv-req:PartyName>
     <cv-req:Contact>
       <cv-req:Name>Ola Nordmann</cv-req:Name>
       <cv-req:Telephone>22224444</cv-req:Telephone>
       <cv-req:ElectronicMail>ola.nordmann@direktorat.no</cv-req:ElectronicMail>
     </cv-req:Contact>
+    </cv-req:Party>
   </cv-req:SenderParty>
   <!-- end::Sender[] -->
 
   <!-- tag::Receiver[] -->
   <cv-req:ReceiverParty>
+    <cv-req:Party>
     <cv-req:EndpointID schemeID="0192">987654325</cv-req:EndpointID><!--1-->
-    <cv-req:Name>X company</cv-req:Name>
+    <cv-req:PartyName>
+      <cv-req:Name>X company</cv-req:Name>
+    </cv-req:PartyName>
     <cv-req:Contact>
       <cv-req:Name>John Johnsen</cv-req:Name>
       <cv-req:Telephone>99998888</cv-req:Telephone>
       <cv-req:ElectronicMail>john.johnsen@x.com</cv-req:ElectronicMail>
     </cv-req:Contact>
+    </cv-req:Party>
   </cv-req:ReceiverParty>
   <!-- end::Receiver[] -->
   
@@ -56,7 +70,7 @@
       <cv-req:ID>3</cv-req:ID>
       <cv-req:Requirement>must</cv-req:Requirement>
       <cv-req:Title>bachelor</cv-req:Title>
-      <cv-req:EducationDegree>7</cv-req:EducationDegree>
+      <cv-req:EducationDegree>6</cv-req:EducationDegree>
     </cv-req:AlternativeEducation>
   </cv-req:Education>
   <!-- end::EducationAlternative[] -->
@@ -90,7 +104,7 @@
     <cv-req:ID>1</cv-req:ID><!--1-->
     <cv-req:Requirement>should</cv-req:Requirement><!--2-->
     <cv-req:Title>HMS security airport</cv-req:Title><!--3-->
-    <cv-req:Version>2.0</cv-req:Version><!--4-->
+    <cv-req:VersionID>2.0</cv-req:VersionID><!--4-->
     <cv-req:Period><!--5-->
       <cv-req:StartDate>2020-01-10</cv-req:StartDate>
       <cv-req:EndDate>2020-05-05</cv-req:EndDate>
@@ -99,7 +113,7 @@
       <cv-req:ID>1</cv-req:ID>
       <cv-req:Requirement>should</cv-req:Requirement>
       <cv-req:Title>HMS security airport</cv-req:Title>
-      <cv-req:Version>1.0</cv-req:Version>
+      <cv-req:VersionID>1.0</cv-req:VersionID>
       <cv-req:Period>
         <cv-req:StartDate>2019-01-10</cv-req:StartDate>
         <cv-req:EndDate>2020-05-05</cv-req:EndDate>
@@ -113,7 +127,7 @@
     <cv-req:ID>1</cv-req:ID><!--1-->
     <cv-req:Requirement>must</cv-req:Requirement><!--2-->
     <cv-req:Title>archimate</cv-req:Title><!--3-->
-    <cv-req:Version>3.0</cv-req:Version><!--4-->
+    <cv-req:VersionID>3.0</cv-req:VersionID><!--4-->
     <cv-req:ValidTo>2025-05-05</cv-req:ValidTo><!--5-->
   </cv-req:Certification>
   <!-- end::Certification-1[] -->
@@ -123,7 +137,6 @@
     <cv-req:ID>2</cv-req:ID><!--1-->
     <cv-req:Requirement>must</cv-req:Requirement><!--2-->
     <cv-req:Title>Svanemerket</cv-req:Title><!--3-->
-    <cv-req:Type>Environmental</cv-req:Type><!--4-->
   </cv-req:Certification>
   <!-- end::Certification-2[] -->
 
@@ -132,13 +145,13 @@
     <cv-req:ID>1</cv-req:ID><!--1-->
     <cv-req:Requirement>should</cv-req:Requirement><!--2-->
     <cv-req:Title>Organization leader</cv-req:Title><!--3-->
-    <cv-req:Version>3.0</cv-req:Version><!--4-->
+    <cv-req:VersionID>3.0</cv-req:VersionID><!--4-->
     <cv-req:ValidTo>2020-12-01</cv-req:ValidTo><!--5-->
     <cv-req:AlternativeCertification><!--6-->
       <cv-req:ID>1</cv-req:ID>
       <cv-req:Requirement>should</cv-req:Requirement>
       <cv-req:Title>Organization leader</cv-req:Title>
-      <cv-req:Version>2.0</cv-req:Version>
+      <cv-req:VersionID>2.0</cv-req:VersionID>
       <cv-req:ValidTo>2020-12-01</cv-req:ValidTo>
     </cv-req:AlternativeCertification>
   </cv-req:Certification>
@@ -150,7 +163,7 @@
     <cv-req:Requirement>must</cv-req:Requirement><!--2-->
     <cv-req:Language>no</cv-req:Language><!--3-->
     <cv-req:Scandinavian>true</cv-req:Scandinavian><!--4-->
-     <cv-req:OralSkill>B1</cv-req:OralSkill><!--5-->
+    <cv-req:OralSkill>B1</cv-req:OralSkill><!--5-->
     <cv-req:WrittenSkill>B1</cv-req:WrittenSkill><!--6-->
   </cv-req:LanguageSkills>
   <!-- end::LanguageSkills[] -->
@@ -163,13 +176,13 @@
     <cv-req:Scandinavian>true</cv-req:Scandinavian><!--4-->
     <cv-req:OralSkill>B1</cv-req:OralSkill><!--5-->
     <cv-req:WrittenSkill>B1</cv-req:WrittenSkill><!--6-->
-    <cv-req:AlternativeLanguageSkills><!--7-->
+    <cv-req:AlternativeLanguageSkill><!--7-->
       <cv-req:ID>1</cv-req:ID>
       <cv-req:Requirement>should</cv-req:Requirement>
       <cv-req:Language>en</cv-req:Language>
       <cv-req:OralSkill>A1</cv-req:OralSkill>
       <cv-req:WrittenSkill>A1</cv-req:WrittenSkill>
-    </cv-req:AlternativeLanguageSkills>
+    </cv-req:AlternativeLanguageSkill>
   </cv-req:LanguageSkills>
   <!-- end::LanguageSkillsAlternative[] -->
 
@@ -195,8 +208,8 @@
       <cv-req:Activities>Must have done financial analysis by using R.</cv-req:Activities><!--11-->
     </cv-req:ExperienceDescription>
     <cv-req:ExperienceValue>
-      <cv-req:ProjectParticipation unitOfMeasure="MON">5</cv-req:ProjectParticipation><!--12-->
-      <cv-req:ProjectSize unitOfMeasure="MON">5</cv-req:ProjectSize><!--13-->
+      <cv-req:ProjectParticipation unitCode="MON">5</cv-req:ProjectParticipation><!--12-->
+      <cv-req:ProjectSize unitCode="MON">5</cv-req:ProjectSize><!--13-->
       <cv-req:ProjectValue currencyID="NOK">100</cv-req:ProjectValue><!--14-->
     </cv-req:ExperienceValue>
   </cv-req:ProjectExperience>
@@ -224,8 +237,8 @@
       <cv-req:Activities>Must coordinate comapnies web-portal.</cv-req:Activities><!--11-->
     </cv-req:ExperienceDescription>
     <cv-req:ExperienceValue>
-      <cv-req:ProjectParticipation unitOfMeasure="MON">5</cv-req:ProjectParticipation><!--12-->
-      <cv-req:ProjectSize unitOfMeasure="MON">20</cv-req:ProjectSize><!--13-->
+      <cv-req:ProjectParticipation unitCode="MON">5</cv-req:ProjectParticipation><!--12-->
+      <cv-req:ProjectSize unitCode="MON">20</cv-req:ProjectSize><!--13-->
       <cv-req:ProjectValue currencyID="NOK">1500000</cv-req:ProjectValue><!--14-->
     </cv-req:ExperienceValue>
     <cv-req:AlternativeProjectExperience><!--15-->
@@ -249,8 +262,8 @@
         <cv-req:Activities>Developing IT-system.</cv-req:Activities>
       </cv-req:ExperienceDescription>
       <cv-req:ExperienceValue>
-        <cv-req:ProjectParticipation unitOfMeasure="MON">5</cv-req:ProjectParticipation>
-        <cv-req:ProjectSize unitOfMeasure="MON">15</cv-req:ProjectSize>
+        <cv-req:ProjectParticipation unitCode="MON">5</cv-req:ProjectParticipation>
+        <cv-req:ProjectSize unitCode="MON">15</cv-req:ProjectSize>
         <cv-req:ProjectValue currencyID="NOK">1500000</cv-req:ProjectValue>
       </cv-req:ExperienceValue>
     </cv-req:AlternativeProjectExperience>
@@ -261,7 +274,7 @@
   <cv-req:WorkExperience>
     <cv-req:ID>1</cv-req:ID><!--1-->
     <cv-req:Requirement>must</cv-req:Requirement><!--2-->
-    <cv-req:PositionLevel>Managers</cv-req:PositionLevel><!--3-->
+    <cv-req:PositionLevel>employee</cv-req:PositionLevel><!--3-->
     <cv-req:IndustryType>01230</cv-req:IndustryType><!--4-->
     <cv-req:Workplace>AI</cv-req:Workplace><!--5-->
     <cv-req:JobSector>private</cv-req:JobSector><!--6-->
@@ -282,7 +295,7 @@
   <cv-req:WorkExperience>
     <cv-req:ID>1</cv-req:ID><!--1-->
     <cv-req:Requirement>should</cv-req:Requirement><!--2-->
-    <cv-req:PositionLevel>Professionals</cv-req:PositionLevel><!--3-->
+    <cv-req:PositionLevel>employee</cv-req:PositionLevel><!--3-->
     <cv-req:IndustryType>71200</cv-req:IndustryType><!--4-->
     <cv-req:Workplace>AI</cv-req:Workplace><!--5-->
     <cv-req:JobSector>private</cv-req:JobSector><!--6-->
@@ -299,7 +312,7 @@
     <cv-req:AlternativeWorkExperience><!--12-->
       <cv-req:ID>1</cv-req:ID>
       <cv-req:Requirement>should</cv-req:Requirement>
-      <cv-req:PositionLevel>Professionals</cv-req:PositionLevel>
+      <cv-req:PositionLevel>MiddleLevelManager</cv-req:PositionLevel>
       <cv-req:IndustryType>72190</cv-req:IndustryType>
       <cv-req:Workplace>AI</cv-req:Workplace>
       <cv-req:JobSector>private</cv-req:JobSector>
@@ -316,6 +329,37 @@
     </cv-req:AlternativeWorkExperience>
   </cv-req:WorkExperience>
     <!-- end::WorkExperienceAlternative[] -->
+  
+  <!-- tag::Skills[] -->
+  <cv-req:Skills>
+    <cv-req:ID>1</cv-req:ID><!--1-->
+    <cv-req:Requirement>must</cv-req:Requirement><!--2-->
+    <cv-req:Type>matlab</cv-req:Type><!--3-->
+    <cv-req:LastPractice>2019-02-02</cv-req:LastPractice><!--4-->
+    <cv-req:MinimumLengthPractice>12</cv-req:MinimumLengthPractice><!--5-->
+    <cv-req:SkillsReference>true</cv-req:SkillsReference><!--6-->
+  </cv-req:Skills>
+  <!-- end::Skills[] -->
+  
+  <!-- tag::SkillsAlternative[] -->
+  <cv-req:Skills>
+    <cv-req:ID>1</cv-req:ID><!--1-->
+    <cv-req:Requirement>must</cv-req:Requirement><!--2-->
+    <cv-req:Type>java</cv-req:Type><!--3-->
+    <cv-req:LastPractice>2020-03-03</cv-req:LastPractice><!--4-->
+    <cv-req:MinimumLengthPractice unitCode="MON">5</cv-req:MinimumLengthPractice><!--5-->
+    <cv-req:SkillsReference>true</cv-req:SkillsReference><!--6-->
+    <cv-req:AlternativeSkills><!--7-->
+      <cv-req:ID>1</cv-req:ID>
+      <cv-req:Requirement>must</cv-req:Requirement>
+      <cv-req:Type>java</cv-req:Type>
+      <cv-req:VersionID>8</cv-req:VersionID>
+      <cv-req:LastPractice>2020-03-03</cv-req:LastPractice>
+      <cv-req:MinimumLengthPractice>5</cv-req:MinimumLengthPractice>
+      <cv-req:SkillsReference>true</cv-req:SkillsReference>
+    </cv-req:AlternativeSkills>
+  </cv-req:Skills>
+  <!-- end::SkillsAlternative[] -->
 
   <!-- tag::Clearance[] -->
   <cv-req:Clearance>
@@ -330,66 +374,8 @@
   <cv-req:Clearance>
     <cv-req:ID>1</cv-req:ID><!--1-->
     <cv-req:Requirement>should</cv-req:Requirement><!--2-->
-    <cv-req:Level>TopSecret</cv-req:Level><!--3-->
+    <cv-req:Level>TOPSECRET</cv-req:Level><!--3-->
     <cv-req:ExpirationDate>2025-05-05</cv-req:ExpirationDate><!--4-->
-    <cv-req:AlternativeClearance><!--5-->
-      <cv-req:ID>1</cv-req:ID>
-      <cv-req:Requirement>must</cv-req:Requirement>
-      <cv-req:Type>police</cv-req:Type>
-      <cv-req:Level>Secret</cv-req:Level>
-      <cv-req:ExpirationDate>2025-05-05</cv-req:ExpirationDate>
-    </cv-req:AlternativeClearance>
   </cv-req:Clearance>
   <!-- end::ClearanceAlternative[] -->
-
-  <!-- tag::Reference[] -->
-  <cv-req:Reference>
-    <cv-req:ID>1</cv-req:ID><!--1-->
-    <cv-req:MinimumTotalReference>3</cv-req:MinimumTotalReference><!--2-->
-  </cv-req:Reference>
-  <!-- end::Reference[] -->
-
-  <!-- tag::Skills[] -->
-  <cv-req:Skills>
-    <cv-req:ID>1</cv-req:ID><!--1-->
-    <cv-req:Requirement>must</cv-req:Requirement><!--2-->
-    <cv-req:Type>matlab</cv-req:Type><!--3-->
-    <cv-req:SkillPractice>
-      <cv-req:LastPractice>2019-02-02</cv-req:LastPractice><!--4-->
-      <cv-req:MinimumLengthPractice>12</cv-req:MinimumLengthPractice><!--5-->
-      <cv-req:SkillsReference>True</cv-req:SkillsReference><!--6-->
-    </cv-req:SkillPractice>
-  </cv-req:Skills>
-  <!-- end::Skills[] -->
-
-  <!-- tag::SkillsAlternative[] -->
-  <cv-req:Skills>
-    <cv-req:ID>1</cv-req:ID><!--1-->
-    <cv-req:Requirement>must</cv-req:Requirement><!--2-->
-    <cv-req:Type>java</cv-req:Type><!--3-->
-    <cv-req:SkillPractice>
-      <cv-req:LastPractice>2020-03-03</cv-req:LastPractice><!--4-->
-      <cv-req:MinimumLengthPractice unitOfMeasure="MON">5</cv-req:MinimumLengthPractice><!--5-->
-      <cv-req:SkillsReference>True</cv-req:SkillsReference><!--6-->
-    </cv-req:SkillPractice>
-    <cv-req:AlternativeSkills><!--7-->
-      <cv-req:ID>1</cv-req:ID>
-      <cv-req:Requirement>must</cv-req:Requirement>
-      <cv-req:Type>java</cv-req:Type>
-      <cv-req:Version>8</cv-req:Version>
-      <cv-req:SkillPractice>
-        <cv-req:LastPractice>2020-03-03</cv-req:LastPractice>
-        <cv-req:MinimumLengthPractice>5</cv-req:MinimumLengthPractice>
-        <cv-req:SkillsReference>True</cv-req:SkillsReference>
-      </cv-req:SkillPractice>
-    </cv-req:AlternativeSkills>
-  </cv-req:Skills>
-  <!-- end::SkillsAlternative[] -->
-
-  <!-- tag::PersonalSkills[] -->
-  <cv-req:PersonalSkills>
-    <cv-req:ID>1</cv-req:ID><!--1-->
-    <cv-req:Type>leadership</cv-req:Type><!--2-->
-  </cv-req:PersonalSkills>
-  <!-- end::PersonalSkills[] -->
 </cv-req:CVRequest>

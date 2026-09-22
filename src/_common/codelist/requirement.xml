@@ -9,15 +9,13 @@
     
     <Code>
         <Id>must</Id>
-        <Description>This requirement must be fullfilled.</Description>
+        <Description>This requirement must be fulfilled.</Description>
     </Code>
     
     <Code>
         <Id>should</Id>
-        <Description>This requirement should be fullfilled.</Description>
+        <Description>This requirement should be fulfilled.</Description>
     </Code>
-
-    <!-- end::Requirement[] -->
 
 </CodeList>
 

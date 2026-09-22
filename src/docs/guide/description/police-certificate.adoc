@@ -14,8 +14,8 @@ The Contracting Authority can request that the Police certificate must be valid 
 include::../{snippet-dir-cv-request}/cv-request.xml[tags=PoliceCertificate]
 ----
 <1> Police certificate identifier.
-<2> Certificate requirement - indicates whether a candidate needs to fulfill the requirement.  According to codelist Requirement code (chapter 5.5).
-<3> Certificate type according to code list Police certificate (chapter 5.6).
+<2> Certificate requirement - indicates whether a candidate needs to fulfill the requirement.  According to codelist Requirement code
+<3> Certificate type according to code list Police certificate
 <4> The date that the Police certificate must be valid to.
 
 == Information specific to CV
@@ -28,6 +28,6 @@ Based on the requirement, the Economic Operator must document the candidate's Po
 include::../{snippet-dir-cv}/cv.xml[tags=PoliceCertificate]
 ----
 <1> Police certificate identifier.
-<2> Certificate type according to code list Police certificate (chapter 5.6).
+<2> Certificate type according to code list Police certificate
 <3> The date that the Police certificate is valid to.
 <4> The Police certificate as an embedded attachment.

@@ -14,10 +14,10 @@ Note that the alternative requirements include the same information elements as 
 All language skills need to be identified uniquely, to ensure that the language skill can be referenced in the CV.
 The element `cv-req:Requirement` shall be used to differentiate between languages skills that *should* and *must* be present.
 
-Oral skill and written skill must be provided for each language skill requirement. The skill levels are based on
+Oral skill and written skill may be provided for each language skill requirement. The skill levels are based on
 EU global standard. Note that the skill level is a minimum requirement. For example, the Contracting Authority wants a candidate
-with a `B1` oral skill level. The candidate has an oral skill level on `A1`, which implies that the candidate is qualified.
-Also note that if Scandinavian is set to true, this will overrule the skill requirements between no, sv and dk. 
+with a `B1` oral skill level. A candidate with an oral skill level of `C1` is above that level and therefore qualified.
+Also note that if Scandinavian is set to true, this will overrule the skill requirements between no, sv and da. 
 
 .Example of the requested language skill in the CV request
 [source, xml, indent=0]
@@ -25,8 +25,8 @@ Also note that if Scandinavian is set to true, this will overrule the skill requ
 include::../{snippet-dir-cv-request}/cv-request.xml[tags=LanguageSkills]
 ----
 <1> Language skill identifier
-<2> Language skill requirement - indicate whether a candidate needs to fulfill the language requirement.  According to codelist Requirement code (chapter 5.5).
-<3> A specific language according to codelist ISO639 Language code (chapter 5.14)
+<2> Language skill requirement - indicate whether a candidate needs to fulfill the language requirement.  According to codelist Requirement code
+<3> A specific language according to codelist ISO639 Language code
 <4> Set to true if the language is no, sv or da
 <5> Oral skill
 <6> Written skill
@@ -37,21 +37,19 @@ include::../{snippet-dir-cv-request}/cv-request.xml[tags=LanguageSkills]
 include::../{snippet-dir-cv-request}/cv-request.xml[tags=LanguageSkillsAlternative]
 ----
 <1> Language skill identifier
-<2> Language skill requirement - indicate whether a candidate needs to fulfill the language requirement.  According to codelist Requirement code (chapter 5.5).
-<3> A specific language according to codelist ISO639 Language code (chapter 5.14)
+<2> Language skill requirement - indicate whether a candidate needs to fulfill the language requirement.  According to codelist Requirement code
+<3> A specific language according to codelist ISO639 Language code
 <4> Set to true if the language is no, sv or da
-<5> Oral skill according to codelist Language level (chapter 5.3)
-<6> Written skill according to codelist Language level (chapter 5.3)
+<5> Oral skill according to codelist Language level
+<6> Written skill according to codelist Language level
 <7> Alternative language skill requirements
 
 
 == Information specific to CV
 
 Based on the language skill requirements, the Economic Operator needs to document the candidate's language skills.
-Oral skill and written skill must be provided for each language. The skill levels must be defined according to the
+Oral skill and written skill should be provided for each language. The skill levels must be defined according to the
 EU global standard codelist.
-
-The element `cv:LanguageSkillsReference` must contain reference to the corresponding language skill requirement in the CV request.
 
 .Example of a description of language skill in CV as a response to requested language skill in CV request
 [source, xml, indent=0]
@@ -59,8 +57,8 @@ The element `cv:LanguageSkillsReference` must contain reference to the correspon
 include::../{snippet-dir-cv}/cv.xml[tags=LanguageSkills]
 ----
 <1> Language skill identifier
-<2> A specific language according to codelist ISO639 Language code (chapter 5.14)
+<2> A specific language according to codelist ISO639 Language code
 <3> Set to true if the language is no, sv or da
-<4> Oral skill according to codelist Language level (chapter 5.3)
-<5> Written skill according to codelist Language level (chapter 5.3)
+<4> Oral skill according to codelist Language level
+<5> Written skill according to codelist Language level
 <6> Contact information related to candidate's language skill

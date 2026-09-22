@@ -13,18 +13,18 @@ IMPORTANT: CustomizationID is a string without spaces. The list below contains s
 
 In the table below you will find the values to be used as the specification identifier and the business process type for this profile
 
-[cols="4s,4a,4a", options="header"]
+[cols="3s,3a,3a", options="header"]
 |===
 | Type
-| Element `cbc:CustomizationID`
-| Element `cbc:ProfileID`
-
+| Element `cv:CustomizationID` / `cv-req:CustomizationID`
+| Element `cv:ProfileID` / `cv-req:ProfileID`
 
 | EHF CV Request
-|
-.2+|
+|urn:fdc:anskaffelser.no:2019:ehf:cvrequest:1
+|urn:fdc:anskaffelser.no:2019:ehf-cv:1
 
 | EHF CV
-|
+| urn:fdc:anskaffelser.no:2019:ehf:cv:1
+|urn:fdc:anskaffelser.no:2019:ehf-cv:1
 
 |===

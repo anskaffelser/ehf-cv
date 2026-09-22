@@ -9,12 +9,12 @@ CV request. The alternative requirement is optional, but may be used when differ
 
 The element `cv-req:Requirement` shall be used to differentiate between skills that *should* and *must* be present.
 
-A description of the relevant skill must be provided in `cv-req:Type`, ref. examples in chapter below.
+A description of the relevant skill is provided in `cv-req:Type`, ref. examples in chapter below.
 
-The Contracting Authority can specify details about the skill practices in element `cv-req:SkillPractice`.
-The element contains information about the last practiced date, the skill practice length
-(minimum requirement - must be stated as months) and if the candidate must provide a reference person
-(element `cv-req:SkillsReference` is `true`).
+The Contracting Authority can specify details about the skill practice directly on `cv-req:Skills`:
+the last practiced date (`cv-req:LastPractice`), the skill practice length
+(`cv-req:MinimumLengthPractice` - minimum requirement, normally stated as months) and whether the
+candidate must provide a reference person (`cv-req:SkillsReference` set to `true`).
 
 .Example of the requested skill in the CV request
 [source, xml, indent=0]
@@ -22,8 +22,8 @@ The element contains information about the last practiced date, the skill practi
 include::../{snippet-dir-cv-request}/cv-request.xml[tags=Skills]
 ----
 <1> Skill identifier
-<2> Skill requirement - indicate whether a candidate needs to fulfill the skill requirement.  According to codelist Requirement code (chapter 5.5).
-<3> Type of skill, see examples below
+<2> Skill requirement - indicate whether a candidate needs to fulfill the skill requirement.  According to codelist Requirement code
+<3> Type of skill
 <4> Last practice date
 <5> Length of practice
 <6> Skills reference to specify the need for a reference person (true or false)
@@ -35,8 +35,8 @@ include::../{snippet-dir-cv-request}/cv-request.xml[tags=Skills]
 include::../{snippet-dir-cv-request}/cv-request.xml[tags=SkillsAlternative]
 ----
 <1> Skill identifier
-<2> Skill requirement - indicate whether a candidate needs to fulfill the skill requirement.  According to codelist Requirement code (chapter 5.11).
-<3> Type of skill, see examples below
+<2> Skill requirement - indicate whether a candidate needs to fulfill the skill requirement.  According to codelist Requirement code
+<3> Type of skill
 <4> Last practice date
 <5> Length of practice
 <6> Skills reference to specify the need for a reference/contact person (true or false)
@@ -46,7 +46,7 @@ include::../{snippet-dir-cv-request}/cv-request.xml[tags=SkillsAlternative]
 == Information specific to CV
 
 Based on the skill requirement, the Economic Operator must document the candidate's skill. 
-The element `cv:Contact` must be used to provide contact information to a reference person.
+The element `cv:Contact` is used to provide contact information to a reference person.
 
 .Example of a description of skill in CV as a response to requested skill in CV request
 [source, xml, indent=0]
@@ -54,16 +54,8 @@ The element `cv:Contact` must be used to provide contact information to a refere
 include::../{snippet-dir-cv}/cv.xml[tags=Skills]
 ----
 <1> Skill identifier
-<2> Type of skill, see examples below
+<2> Type of skill
 <3> Last practice date
 <4> Minimum length of practice
 <5> Contact information to reference person
 
-== Examples of skills
-
-The list below gives examples of skills that can be requested.
-
-[source, xml, indent=0]
-----
-include::../../../_common/examples/skills-type.xml[tags=SkillsType]
-----

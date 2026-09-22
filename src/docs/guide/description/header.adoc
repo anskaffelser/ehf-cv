@@ -1,0 +1,27 @@
+= Header Information
+
+Information provided in the header of CV and CV request. Issue Time is optional, all other elements are mandatory.
+
+.Example of header information in the CV request
+[source, xml, indent=0]
+----
+include::../{snippet-dir-cv-request}/cv-request.xml[tags=Header]
+----
+<1> CustomizationID identifies the transaction used in the Peppol network.
+<2> ProfileID identifies the profile used in the Peppol network.
+<3> ID is a unique identification of the message. UUID or similar.
+<4> Role description is the role or job title that the CV is requested for.
+<5> Issue date is the date when the CV-request was sent.
+<6> Issue time is the time when the CV-request was sent.
+
+.Example of a description of header information in a CV
+[source, xml, indent=0]
+----
+include::../{snippet-dir-cv}/cv.xml[tags=Header]
+----
+<1> CustomizationID identifies the transaction used in the Peppol network.
+<2> ProfileID identifies the profile used in the Peppol network.
+<3> ID is a unique identification of the message. UUID or similar.
+<4> Role description is the role or job title that the CV is submitted for.
+<5> Issue date is the date when the CV was sent.
+<6> Issue time is the time when the CV was sent.

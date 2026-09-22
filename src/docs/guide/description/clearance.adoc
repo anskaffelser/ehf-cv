@@ -23,7 +23,7 @@ include::../{snippet-dir-cv-request}/cv-request.xml[tags=Clearance]
 ----
 <1> Clearance identifier
 <2> Clearance requirement - indicate whether a candidate needs to fulfill the clearance requirement.  According to codelist Requirement code (chapter 5.5).
-<3> Clearance level according to codelist Clearance level (chapter 5.1)
+<3> Clearance level according to codelist Clearance level
 <4> Expiration date
 
 
@@ -31,10 +31,7 @@ include::../{snippet-dir-cv-request}/cv-request.xml[tags=Clearance]
 
 Based on the clearance requirement, the Economic Operator needs to document the candidate's
 clearance. 
-The documentation of clearance can be stated as URI (`cv:URI`) or embedded document (`cv:EmbeddedDocumentBinaryObject`).
-
-Candidates who don't fulfill the clearance requirement can describe the reason and whether this can
-be done before the job period. Use element `cv:Description`. 
+The documentation of clearance can be stated as URI (`cv:ExternalReference/cv:URI`) or embedded document (`cv:EmbeddedDocumentBinaryObject`).
 
 .Example of a description of clearance in CV as a response to requested clearance in CV request
 [source, xml, indent=0]
@@ -42,7 +39,7 @@ be done before the job period. Use element `cv:Description`.
 include::../{snippet-dir-cv}/cv.xml[tags=Clearance]
 ----
 <1> Clearance identifier
-<2> Clearance level according to codelist Clearance level (chapter 5.1)
+<2> Clearance level according to codelist Clearance level
 <3> Clearance expiration date
 <4> Embedded document as binary object with `mimeCode`. Use Base64.
-<5> Additional description related to clearance, e.g. if the clearance can be done before the job period if not in place already.
+<5> URI to clearance documentation

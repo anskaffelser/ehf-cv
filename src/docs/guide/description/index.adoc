@@ -4,6 +4,8 @@
 
 //include::general.adoc[]
 
+include::header.adoc[]
+
 include::parties.adoc[]
 
 include::police-certificate.adoc[]
@@ -24,13 +26,7 @@ include::skills.adoc[]
 
 include::clearance.adoc[]
 
-//include::personal-skills.adoc[]
-
-//include::references.adoc[]
-
 include::personal-information.adoc[]
-
-//include::interest.adoc[]
 
 include::additional-information.adoc[]
 

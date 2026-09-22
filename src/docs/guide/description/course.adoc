@@ -14,9 +14,7 @@ All courses need to be identified uniquely to ensure that the course can be refe
 CV. The element `cv-req:Requirement` shall be used to differentiate between courses that *should* and *must* be present. The Economic Operators
 will only provide qualified candidates, and this makes it easier to do the rating.
 
-A course must include either the element `cv-req:Type` or `cv-req:Title` to identify the specific course. Use type if the specific course is defined in the course codelist, otherwise use the title.
-
-In course requirement, the Contacting Authority can specify which period (`cv-req:Period`) the candidate must finish the course. This can
+In course requirement, the Contracting Authority can specify which period (`cv-req:Period`) the candidate must finish the course. This can
 be a date in the future. 
 
 .Example of the requested course in the CV request
@@ -25,8 +23,8 @@ be a date in the future.
 include::../{snippet-dir-cv-request}/cv-request.xml[tags=Course]
 ----
 <1> Course identifier
-<2> Course requirement - indicate whether a candidate needs to fulfill the course requirement.  According to codelist Requirement code (chapter 5.5).
-<3> Course title, see examples below
+<2> Course requirement - indicate whether a candidate needs to fulfill the course requirement.  According to codelist Requirement code
+<3> Course title
 <4> Period
 
 .Example of the requested course in the CV request with alternative requirement
@@ -35,8 +33,8 @@ include::../{snippet-dir-cv-request}/cv-request.xml[tags=Course]
 include::../{snippet-dir-cv-request}/cv-request.xml[tags=CourseAlternative]
 ----
 <1> Course identifier
-<2> Course requirement - indicate whether a candidate needs to fulfill the course requirement.  According to codelist Requirement code (chapter 5.5).
-<3> Course title, see examples below
+<2> Course requirement - indicate whether a candidate needs to fulfill the course requirement.  According to codelist Requirement code
+<3> Course title
 <4> Course version
 <5> Period
 <6> Alternative course requirement
@@ -44,8 +42,6 @@ include::../{snippet-dir-cv-request}/cv-request.xml[tags=CourseAlternative]
 == Information specific to CV
 
 Based on the course requirement, the Economic Operator needs to document the candidate's courses.
-
-The element `cv:CourseReference` must correspond to the course requirement in the CV request.
 
 It is possible to state information about the supplier of the course. This might be relevant for some Contracting
 Authorities, since different suppliers may offer the same course with different content.
@@ -56,19 +52,12 @@ Authorities, since different suppliers may offer the same course with different 
 include::../{snippet-dir-cv}/cv.xml[tags=Course]
 ----
 <1> Course identifier
-<2> Course title, see examples below
+<2> Course title
 <3> Course period
 <4> Information about the supplier of the course
-<5> The supplier's organisation number. schemeID according to codelist Electronic address identifier (EAID) (chapter 5.11)
+<5> The supplier's organisation number. schemeID according to codelist Electronic address identifier (EAID)
 <6> The legal name of supplier
-<7> Contact information of supplier expressed as email address
-<8> The country where the supplier is registered - expressed as country code from the codelist
+<7> The country where the supplier is registered - expressed as country code from the codelist
+<8> Contact information of supplier expressed as email address
 <9> Embedded document as binary object with `mimeCode`. Use Base64.
 <10> URI to course document
-
-== Course examples
-
-[source, xml, indent=0]
-----
-include::../../../_common/examples/course-type.xml[tags=CourseType]
-----

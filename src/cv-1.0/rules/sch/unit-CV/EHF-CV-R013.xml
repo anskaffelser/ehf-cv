@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testSet xmlns="http://difi.no/xsd/vefa/validator/1.0"
+	configuration="ehf-cv-1.0">
+	<assert>
+		<description>Verify that an experience description is not empty</description>
+		<scope>EHF-CV-R013</scope>
+	</assert>
+
+	<test id="1">
+		<assert>
+			<success>EHF-CV-R013</success>
+		</assert>
+		<CV xmlns="urn:fdc:anskaffelser.no:2019:ehf:schema:CV-1">
+
+			<ProjectExperience>
+				<ExperienceDescription>
+					<PositionPercent>100</PositionPercent>
+				</ExperienceDescription>
+			</ProjectExperience>
+
+		</CV>
+	</test>
+
+	<test id="2">
+		<assert>
+			<success>EHF-CV-R013</success>
+		</assert>
+		<CV xmlns="urn:fdc:anskaffelser.no:2019:ehf:schema:CV-1">
+
+			<ProjectExperience>
+				<ExperienceDescription>
+					<Role>2130110</Role>
+				</ExperienceDescription>
+			</ProjectExperience>
+
+		</CV>
+	</test>
+
+	<test id="3">
+		<assert>
+			<success>EHF-CV-R013</success>
+		</assert>
+		<CV xmlns="urn:fdc:anskaffelser.no:2019:ehf:schema:CV-1">
+
+			<ProjectExperience>
+				<ExperienceDescription>
+					<Activities>Developing web portal.</Activities>
+				</ExperienceDescription>
+			</ProjectExperience>
+
+		</CV>
+	</test>
+
+	<test id="4">
+		<assert>
+			<success>EHF-CV-R013</success>
+		</assert>
+		<CV xmlns="urn:fdc:anskaffelser.no:2019:ehf:schema:CV-1">
+
+			<WorkExperience>
+				<WorkExperienceDescription>
+					<Role>2130163</Role>
+					<Activities>Testing IT-systems.</Activities>
+				</WorkExperienceDescription>
+			</WorkExperience>
+
+		</CV>
+	</test>
+
+	<test id="5">
+		<assert>
+			<error>EHF-CV-R013</error>
+		</assert>
+		<CV xmlns="urn:fdc:anskaffelser.no:2019:ehf:schema:CV-1">
+
+			<ProjectExperience>
+				<ExperienceDescription/>
+			</ProjectExperience>
+
+		</CV>
+	</test>
+
+	<test id="6">
+		<assert>
+			<error>EHF-CV-R013</error>
+		</assert>
+		<CV xmlns="urn:fdc:anskaffelser.no:2019:ehf:schema:CV-1">
+
+			<WorkExperience>
+				<WorkExperienceDescription/>
+			</WorkExperience>
+
+		</CV>
+	</test>
+
+</testSet>
