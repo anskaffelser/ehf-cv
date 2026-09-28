@@ -1,0 +1,22 @@
+include::../settings.adoc[]
+
+= EHF CV Request 1.0
+:description: EHF CV Request describes candidate requirements for a procurement process.
+:doctype: book
+:toc: left
+:toclevels: 2
+:sectanchors:
+
+{description}
+
+The complete link:../guide/[shared implementation guideline] describes the
+exchange process and common information model for EHF CV and EHF CV Request.
+
+== EHF CV Request resources
+
+* link:../syntax/cv-request/tree/[CV Request syntax]
+* link:../rules/cv-request-process-1.0/[CV Request business rules]
+* link:../files/examples.zip[Examples ZIP], containing the request example under `cv-request-1.0/`
+* link:../files/schematron.zip[Schematron ZIP], containing CV Request rules under `cv-request-1.0/`
+
+The corresponding response document is link:../cv/[EHF CV 1.0].

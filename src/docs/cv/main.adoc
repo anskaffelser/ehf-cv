@@ -1,0 +1,22 @@
+include::../settings.adoc[]
+
+= EHF CV 1.0
+:description: EHF CV is the response document used by a supplier to provide candidate information.
+:doctype: book
+:toc: left
+:toclevels: 2
+:sectanchors:
+
+{description}
+
+The complete link:../guide/[shared implementation guideline] describes the
+exchange process and common information model for EHF CV and EHF CV Request.
+
+== EHF CV resources
+
+* link:../syntax/cv/tree/[CV syntax]
+* link:../rules/cv-process-1.0/[CV business rules]
+* link:../files/examples.zip[Examples ZIP], containing the CV example under `cv-1.0/`
+* link:../files/schematron.zip[Schematron ZIP], containing CV rules under `cv-1.0/`
+
+The corresponding request document is link:../cv-request/[EHF CV Request 1.0].
