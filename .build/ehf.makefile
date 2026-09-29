@@ -62,7 +62,7 @@ default: pull build
 else
 default: clean build ownership
 endif
-build: check_docker env scripts_pre $(BUILD) scripts_post docs_post
+build: check_docker env scripts_pre $(BUILD) scripts_post
 RULE_CLEAN=$(shell (test -e $(PROJECT)/target && echo true) || echo false)
 clean:
 ifeq "$(RULE_CLEAN)" "true"
@@ -108,7 +108,7 @@ docs:
 ifeq "$(RULE_DOCS)" "true"
 	$(call docker_run,docs,Creating documentation,\
 			-v $(PROJECT):/src \
-			-v $(PROJECT)/target/site/cv1.0:/target \
+			-v $(PROJECT)/target/site:/target \
 			-w /src/$(DOCS_FOLDER) \
 			-e DIAGRAM=true \
 			asciidoctor/docker-asciidoctor \
@@ -175,20 +175,9 @@ scripts_post:
 ifeq "$(RULE_SCRIPTS_POST)" "true"
 	$(call docker_run,scripts_post,Running post scripts,\
 			-v $(PROJECT):/src \
-			-v $(PROJECT)/target/site/cv1.0:/target \
+			-v $(PROJECT)/target:/target \
 			anskaffelser/ehfbuild \
 			sh /src/.build/ehf.sh trigger_scripts project-post)
-else
-	$(call skip,post scripts)
-endif
-RULE_DOCS_SCRIPTS_POST=$(shell test -d $(PROJECT)/.build/docs-post-scripts && find $(PROJECT)/.build/docs-post-scripts -maxdepth 1 -name '*.sh' | wc -l | xargs test "0" != && echo true || echo false)
-docs_post:
-ifeq "$(RULE_DOCS_SCRIPTS_POST)" "true"
-	$(call docker_run,docs_post,Running post scripts,\
-			-v $(PROJECT):/src \
-			-v $(PROJECT)/target/site/cv1.0:/target \
-			anskaffelser/ehfbuild \
-			sh /src/.build/ehf.sh trigger_scripts docs-post)
 else
 	$(call skip,post scripts)
 endif
@@ -197,7 +186,7 @@ static:
 ifeq "$(RULE_STATIC)" "true"
 	$(call docker_run,static,Copy static content,\
 			-v $(PROJECT):/src \
-			-v $(PROJECT)/target/site/cv1.0:/target \
+			-v $(PROJECT)/target/site:/target \
 			-w /src/static \
 			anskaffelser/ehfbuild \
 			sh /src/.build/ehf.sh trigger_static)
@@ -209,7 +198,7 @@ schematron:
 ifeq "$(RULE_SCHEMATRON)" "true"
 	$(call docker_run,schematron,Packaging Schematron files,\
 			-v $(PROJECT):/src \
-			-v $(PROJECT)/target/site/cv1.0:/target \
+			-v $(PROJECT)/target:/target \
 			anskaffelser/ehfbuild \
 			sh /src/.build/ehf.sh trigger_schematron)
 else
@@ -226,4 +215,4 @@ ifeq "$(RULE_EXAMPLE)" "true"
 else
 	$(call skip,example files)
 endif
-.PHONY: default build clean ownership serve pull env docs rules structure xsd xslt scripts_pre scripts_post docs_post static schematron example check_docker rules_checked
+.PHONY: default build clean ownership serve pull env docs rules structure xsd xslt scripts_pre scripts_post static schematron example check_docker rules_checked

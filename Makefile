@@ -3,6 +3,7 @@
 IDENTIFIER = ehf-cv
 TITLE = EHF CV
 RELEASE = 2026-07-15
+DOCS_FOLDER = src/docs
 
 RULES_IDENT = no.anskaffelser.ehf.cv
 RULES_FOLDER = src

@@ -6,7 +6,7 @@
 
 = Version 1.0 RC1 (2020-01-11) [[changelog-1.0-RC1]]
 
-include::2020-01-11.adoc[]
+include::2021-01-11.adoc[]
 
 :sectnums:
 :leveloffset: -1
