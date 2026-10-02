@@ -12,16 +12,6 @@
     </Resource>
     <Resource>
         <Type>Doc-1</Type>
-        <Path>cv/</Path>
-        <Title>EHF CV 1.0</Title>
-    </Resource>
-    <Resource>
-        <Type>Doc-1</Type>
-        <Path>cv-request/</Path>
-        <Title>EHF CV Request 1.0</Title>
-    </Resource>
-    <Resource>
-        <Type>Doc-1</Type>
         <Path>changelog/</Path>
         <Title>Changelog</Title>
     </Resource>
